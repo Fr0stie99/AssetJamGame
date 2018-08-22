@@ -791,7 +791,7 @@ MonoBehaviour:
   _playerTwoDefault: Player2Keyboard
   _playerThreeDefault: 
   _playerFourDefault: 
-  _dontDestroyOnLoad: 0
+  _dontDestroyOnLoad: 1
   _ignoreTimescale: 0
 --- !u!4 &1253773738
 Transform:
