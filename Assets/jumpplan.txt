@@ -1,0 +1,40 @@
+cool jump game
+
+prereqs:
+	incredibly rad input manager X
+	
+
+gunpoint style :)
+
+CHARGE
+	-display arc X
+		- make arc disappear if it goes through a floor
+		-
+	- change angle based on mouse direction
+		- draw angle from mouse location relative to player
+		- increase force up to cap based on how long button is held
+		- redraw arc each time angle or power changes
+		- decouple trajectory code from everything else
+
+RELEASE
+	- stop firing worthless projectiles
+	- get rid of renderered line
+	- fire player at said arc
+
+LAND
+
+	- when dropped from a high place, check height and create airburst of log(height fallen) size
+		- measure amount dropped whenever y begins decreasing
+	- halt player for millisecond
+	- if slide, don't
+
+SLIDE
+	-lower friction
+	-add tiny bit of force
+
+
+potential attacks
+
+-guns?
+	-hitscan spray in direction of mouse
+	-if line hits, add force
