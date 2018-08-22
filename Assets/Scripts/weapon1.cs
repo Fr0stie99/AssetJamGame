@@ -25,13 +25,17 @@ public class weapon1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //controls the shooting
         if (InputManager.GetButtonUp("Shoot1") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
+
             Quaternion firePointRot = Quaternion.Euler(firePoint.rotation.x, firePoint.rotation.y, firePoint.rotation.z);
             bulletPos = new Vector2(firePoint.position.x, firePoint.position.y);
+
+            //instantiate the projectile
             GameObject bullet = Instantiate (playerBullet, bulletPos, firePointRot);
-            bullet.transform.parent = GameObject.Find("FirePoint").transform;
+            //bullet.transform.parent = GameObject.Find("FirePoint").transform;
            
         }
 

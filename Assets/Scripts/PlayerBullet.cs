@@ -8,18 +8,19 @@ public class PlayerBullet : MonoBehaviour {
     //public float velY = 0f;
     Rigidbody2D rb;
     Transform firePoint;
+    Transform store;
 
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
         firePoint = GameObject.Find("FirePoint").transform;
-        
+        store = firePoint;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        rb.velocity = firePoint.right * projSpeed;
+        rb.velocity = store.right * projSpeed;
 
 	}
 
@@ -33,4 +34,10 @@ public class PlayerBullet : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }
+
