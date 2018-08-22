@@ -669,129 +669,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputConfigurations:
-  - name: KeyboardAndMouse
+  - name: Player1Keyboard
     axes:
     - name: Horizontal
       description: 
-      positive: 100
-      negative: 97
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 3
-      sensitivity: 3
-      snap: 1
-      invert: 0
-      type: 2
-      axis: 0
-      joystick: 0
-    - name: Vertical
-      description: 
-      positive: 119
-      negative: 115
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 3
-      sensitivity: 3
-      snap: 1
-      invert: 0
-      type: 2
-      axis: 0
-      joystick: 0
-    - name: LookHorizontal
-      description: 
-      positive: 0
-      negative: 0
+      positive: 97
+      negative: 100
       altPositive: 0
       altNegative: 0
       deadZone: 0
       gravity: 1
-      sensitivity: 0.1
-      snap: 0
-      invert: 0
-      type: 1
-      axis: 0
-      joystick: 0
-    - name: LookVertical
-      description: 
-      positive: 0
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 1
-      sensitivity: 0.1
-      snap: 0
-      invert: 0
-      type: 1
-      axis: 1
-      joystick: 0
-    - name: MenuHorizontal
-      description: 
-      positive: 100
-      negative: 97
-      altPositive: 275
-      altNegative: 276
-      deadZone: 0
-      gravity: 3
-      sensitivity: 3
-      snap: 1
-      invert: 0
-      type: 2
-      axis: 0
-      joystick: 0
-    - name: MenuVertical
-      description: 
-      positive: 119
-      negative: 115
-      altPositive: 273
-      altNegative: 274
-      deadZone: 0
-      gravity: 3
-      sensitivity: 3
-      snap: 1
-      invert: 0
-      type: 2
-      axis: 0
-      joystick: 0
-    - name: Jump
-      description: 
-      positive: 32
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 0
-      sensitivity: 0
-      snap: 0
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    - name: Submit
-      description: 
-      positive: 32
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 0
-      sensitivity: 0
-      snap: 0
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    - name: Cancel
-      description: 
-      positive: 27
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 0
-      sensitivity: 0
+      sensitivity: 1
       snap: 0
       invert: 0
       type: 0
@@ -799,7 +687,35 @@ MonoBehaviour:
       joystick: 0
     - name: Leap
       description: 
-      positive: 324
+      positive: 119
+      negative: 0
+      altPositive: 0
+      altNegative: 0
+      deadZone: 0
+      gravity: 1
+      sensitivity: 1
+      snap: 0
+      invert: 0
+      type: 0
+      axis: 0
+      joystick: 0
+    - name: Shoot1
+      description: 
+      positive: 113
+      negative: 0
+      altPositive: 0
+      altNegative: 0
+      deadZone: 0
+      gravity: 1
+      sensitivity: 1
+      snap: 0
+      invert: 0
+      type: 0
+      axis: 0
+      joystick: 0
+    - name: Shoot2
+      description: 
+      positive: 101
       negative: 0
       altPositive: 0
       altNegative: 0
@@ -812,11 +728,70 @@ MonoBehaviour:
       axis: 0
       joystick: 0
     isExpanded: 1
-  _playerOneDefault: KeyboardAndMouse
-  _playerTwoDefault: 
+  - name: Player2Keyboard
+    axes:
+    - name: Horizontal
+      description: 
+      positive: 276
+      negative: 275
+      altPositive: 0
+      altNegative: 0
+      deadZone: 0
+      gravity: 1
+      sensitivity: 1
+      snap: 0
+      invert: 0
+      type: 0
+      axis: 0
+      joystick: 0
+    - name: Leap
+      description: 
+      positive: 256
+      negative: 0
+      altPositive: 0
+      altNegative: 0
+      deadZone: 0
+      gravity: 1
+      sensitivity: 1
+      snap: 0
+      invert: 0
+      type: 0
+      axis: 0
+      joystick: 0
+    - name: Shoot1
+      description: 
+      positive: 0
+      negative: 0
+      altPositive: 0
+      altNegative: 0
+      deadZone: 0
+      gravity: 1
+      sensitivity: 1
+      snap: 0
+      invert: 0
+      type: 0
+      axis: 0
+      joystick: 0
+    - name: Shoot2
+      description: 
+      positive: 303
+      negative: 0
+      altPositive: 0
+      altNegative: 0
+      deadZone: 0
+      gravity: 1
+      sensitivity: 1
+      snap: 0
+      invert: 0
+      type: 0
+      axis: 0
+      joystick: 0
+    isExpanded: 1
+  _playerOneDefault: Player1Keyboard
+  _playerTwoDefault: Player2Keyboard
   _playerThreeDefault: 
   _playerFourDefault: 
-  _dontDestroyOnLoad: 1
+  _dontDestroyOnLoad: 0
   _ignoreTimescale: 0
 --- !u!4 &1253773738
 Transform:
