@@ -6,7 +6,6 @@ public class PlayerBullet : MonoBehaviour {
 
     float damage;
     public float projSpeed = 5f;
-    //public float velY = 0f;
     Rigidbody2D rb;
     Transform firePoint;
     Transform store;
@@ -16,31 +15,10 @@ public class PlayerBullet : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
     }
     // Use this for initialization
-    void Start () {
-        /*
-        distance = transform.position.x - GameObject.Find("Player").transform.position.x;
-
-        if (distance > 0)
-        {
-            rb = GetComponent<Rigidbody2D>();
-            firePoint = GameObject.Find("Weapon1").transform.GetChild(0);
-            store = firePoint;
-        }
-        else
-        {
-            rb = GetComponent<Rigidbody2D>();
-            firePoint = GameObject.Find("Weapon2").transform.GetChild(0);
-            store = firePoint;
-        }
-        */
-       
-	}
 	
 	// Update is called once per frame
 	void Update () {
             rb.velocity = transform.right * projSpeed;
-       
-
 	}
 
 
@@ -57,10 +35,10 @@ public class PlayerBullet : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    public void SetAttributes(float damage, GameObject weapon)
+    public void SetAttributes(float damage, float bulletSpeed)
     {
-        firePoint = weapon.transform.GetChild(0);
         this.damage = damage;
+        projSpeed = bulletSpeed;
     }
 }
 
