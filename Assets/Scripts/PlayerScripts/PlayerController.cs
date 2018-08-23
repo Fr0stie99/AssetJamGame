@@ -63,11 +63,19 @@ public class PlayerController : MonoBehaviour {
             weapon1.Fire();
             ApplyRecoil(weapon1);
         }
+        else if (InputManager.GetButtonDown("Shoot1"))
+        {
+
+        }
 
         if (InputManager.GetButtonUp("Shoot2"))
         {
             weapon2.Fire();
             ApplyRecoil(weapon2);
+        }
+        else if (InputManager.GetButtonDown("Shoot2"))
+        {
+
         }
 
           

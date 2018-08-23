@@ -20,7 +20,7 @@ public class ProjectileWeapon : MonoBehaviour {
 
     void Awake()
     {
-        firePoint = transform.GetChild(0);
+        firePoint = transform.Find("Barrel");
     }
 
     public void Fire()
@@ -32,11 +32,14 @@ public class ProjectileWeapon : MonoBehaviour {
             return;
         }
             
-
-        Quaternion firePointRot = Quaternion.Euler(-firePoint.rotation.x, firePoint.rotation.y, firePoint.rotation.z);
         bulletPos = new Vector2(firePoint.position.x, firePoint.position.y);
 
         //instantiate the projectile
-        GameObject bullet = Instantiate(playerBullet, bulletPos, firePointRot);
+        GameObject bullet = Instantiate(playerBullet, bulletPos, Quaternion.identity);
+        bullet.GetComponent<PlayerBullet>().SetAttributes(damage, gameObject);
+        bullet.transform.rotation = transform.GetChild(0).rotation;
+        
     }
+
+    
 }
