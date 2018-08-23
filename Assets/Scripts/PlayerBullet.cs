@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour {
 
+    float damage;
     public float projSpeed = 5f;
     //public float velY = 0f;
     Rigidbody2D rb;
@@ -28,16 +29,19 @@ public class PlayerBullet : MonoBehaviour {
     //Destroy projectile upon collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name != "Player")
+
+        
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log(collision.gameObject.name);
-            Destroy(gameObject);
+            collision.gameObject.GetComponent<PlayerHealth>().HurtMe(damage);
+            
         }
+        Destroy(gameObject);
     }
 
-    void OnBecameInvisible()
+    public void SetDamage(float damage)
     {
-        Destroy(gameObject);
+        this.damage = damage;
     }
 }
 

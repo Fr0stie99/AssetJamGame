@@ -11,8 +11,7 @@ using TeamUtility.IO;
 [RequireComponent(typeof(PlayerHealth))]
 public class PlayerController : MonoBehaviour {
 
-    [SerializeField]
-    private PlayerID _playerID;
+    public PlayerID _playerID;
     TrajectoryGenerator leapManager;
     Rigidbody2D rb2D;
     GroundedManager gm;
