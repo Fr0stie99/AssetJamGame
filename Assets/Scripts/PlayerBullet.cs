@@ -20,13 +20,13 @@ public class PlayerBullet : MonoBehaviour {
         if (distance > 0)
         {
             rb = GetComponent<Rigidbody2D>();
-            firePoint = GameObject.Find("FirePoint1").transform;
+            firePoint = GameObject.Find("Weapon1").transform.GetChild(0);
             store = firePoint;
         }
         else
         {
             rb = GetComponent<Rigidbody2D>();
-            firePoint = GameObject.Find("FirePoint2").transform;
+            firePoint = GameObject.Find("Weapon2").transform.GetChild(0);
             store = firePoint;
         }
         
@@ -55,7 +55,7 @@ public class PlayerBullet : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    public void SetDamage(float damage)
+    public void SetAttributes(float damage)
     {
         this.damage = damage;
     }

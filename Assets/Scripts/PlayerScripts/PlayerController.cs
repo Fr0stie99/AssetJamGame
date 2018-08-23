@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
     Rigidbody2D rb2D;
     GroundedManager gm;
     PlayerHealth health;
-    
+    ProjectileWeapon weapon1, weapon2;
 
     float horizontal, lookHorizontal, lookVertical;
 
@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour {
         rb2D = GetComponent<Rigidbody2D>();
         gm = GetComponent<GroundedManager>();
         health = GetComponent<PlayerHealth>();
+        weapon1 = transform.Find("Weapon1").GetComponent<ProjectileWeapon>();
+        weapon2 = transform.Find("Weapon2").GetComponent<ProjectileWeapon>();
     }
 	
 	// Update is called once per frame
@@ -56,9 +58,23 @@ public class PlayerController : MonoBehaviour {
             hasCharged = false;
         }
 
+        if (InputManager.GetButtonUp("Shoot1"))
+        {
+            weapon1.Fire();
+            ApplyRecoil(weapon1);
+        }
+
+        if (InputManager.GetButtonUp("Shoot2"))
+        {
+            weapon2.Fire();
+            ApplyRecoil(weapon2);
+        }
+
+          
+
         //grounded check
 
-        
+
 
     }
 
@@ -77,6 +93,11 @@ public class PlayerController : MonoBehaviour {
         leapManager.UpdateAndDrawTrajectory(Camera.main.ScreenToWorldPoint(InputManager.mousePosition));
         hasCharged = true;
         
+    }
+
+    void ApplyRecoil(ProjectileWeapon weapon)
+    {
+        rb2D.AddForce(-(weapon.transform.GetChild(0).right * weapon.recoil));
     }
 
 
