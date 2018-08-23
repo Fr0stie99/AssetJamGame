@@ -9,18 +9,34 @@ public class PlayerBullet : MonoBehaviour {
     Rigidbody2D rb;
     Transform firePoint;
     Transform store;
+    float distance;
 
     // Use this for initialization
     void Start () {
-        rb = GetComponent<Rigidbody2D>();
-        firePoint = GameObject.Find("FirePoint").transform;
-        store = firePoint;
+        distance = transform.position.x - GameObject.Find("Player").transform.position.x;
+        Debug.Log(distance);
+
+        if (distance > 0)
+        {
+            rb = GetComponent<Rigidbody2D>();
+            firePoint = GameObject.Find("FirePoint1").transform;
+            store = firePoint;
+        }
+        else
+        {
+            rb = GetComponent<Rigidbody2D>();
+            firePoint = GameObject.Find("FirePoint2").transform;
+            store = firePoint;
+        }
+        
+       
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-        rb.velocity = store.right * projSpeed;
+        
+            rb.velocity = Mathf.Sign(distance)*(store.right * projSpeed);
+       
 
 	}
 

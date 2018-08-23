@@ -5,8 +5,8 @@ using UnityEngine;
 using TeamUtility.IO.Examples;
 using TeamUtility.IO;
 
-public class weapon1 : MonoBehaviour
-{
+public class Weapon2 : MonoBehaviour {
+
     [SerializeField]
     private PlayerID _playerID;
 
@@ -19,24 +19,24 @@ public class weapon1 : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-      
+
     }
 
     // Update is called once per frame
     void Update()
     {
         //controls the shooting
-        if (InputManager.GetButtonUp("Shoot2") && Time.time > nextFire)
+        if (InputManager.GetButtonUp("Shoot1") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
 
-            Quaternion firePointRot = Quaternion.Euler(firePoint.rotation.x, firePoint.rotation.y, firePoint.rotation.z);
+            Quaternion firePointRot = Quaternion.Euler(-firePoint.rotation.x, firePoint.rotation.y, firePoint.rotation.z);
             bulletPos = new Vector2(firePoint.position.x, firePoint.position.y);
 
             //instantiate the projectile
-            GameObject bullet = Instantiate (playerBullet, bulletPos, firePointRot);
+            GameObject bullet = Instantiate(playerBullet, bulletPos, firePointRot);
             //bullet.transform.parent = GameObject.Find("FirePoint").transform;
-           
+            
         }
 
     }
