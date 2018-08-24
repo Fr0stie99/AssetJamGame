@@ -4,56 +4,41 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour {
 
+    float damage;
     public float projSpeed = 5f;
-    //public float velY = 0f;
     Rigidbody2D rb;
     Transform firePoint;
     Transform store;
     float distance;
-
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     // Use this for initialization
-    void Start () {
-        distance = transform.position.x - GameObject.Find("Player").transform.position.x;
-        Debug.Log(distance);
-
-        if (distance > 0)
-        {
-            rb = GetComponent<Rigidbody2D>();
-            firePoint = GameObject.Find("FirePoint1").transform;
-            store = firePoint;
-        }
-        else
-        {
-            rb = GetComponent<Rigidbody2D>();
-            firePoint = GameObject.Find("FirePoint2").transform;
-            store = firePoint;
-        }
-        
-       
-	}
 	
 	// Update is called once per frame
 	void Update () {
-        
-            rb.velocity = Mathf.Sign(distance)*(store.right * projSpeed);
-       
-
+            rb.velocity = transform.right * projSpeed;
 	}
 
 
     //Destroy projectile upon collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name != "Player")
+
+        
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log(collision.gameObject.name);
-            Destroy(gameObject);
+            collision.gameObject.GetComponent<PlayerHealth>().HurtMe(damage);
+            
         }
+        Destroy(gameObject);
     }
 
-    void OnBecameInvisible()
+    public void SetAttributes(float damage, float bulletSpeed)
     {
-        Destroy(gameObject);
+        this.damage = damage;
+        projSpeed = bulletSpeed;
     }
 }
 
