@@ -18,9 +18,10 @@ public class PlayerController : MonoBehaviour {
     PlayerHealth health;
     ProjectileWeapon weapon1, weapon2;
 
-    float horizontal, lookHorizontal, lookVertical;
 
-    public float speed;
+    float horizontal, shoot1Timer = 0f, shoot2Timer = 0f, shoot1Threshold, shoot2Threshold;
+
+    public float speed, buttonThreshold;
 
     bool hasCharged;
 	// Use this for initialization
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour {
         health = GetComponent<PlayerHealth>();
         weapon1 = transform.Find("Weapon1").GetComponent<ProjectileWeapon>();
         weapon2 = transform.Find("Weapon2").GetComponent<ProjectileWeapon>();
+        shoot1Threshold = buttonThreshold;
+        shoot2Threshold = buttonThreshold;
     }
 	
 	// Update is called once per frame
@@ -58,24 +61,40 @@ public class PlayerController : MonoBehaviour {
             hasCharged = false;
         }
 
-        if (InputManager.GetButtonUp("Shoot1"))
+        if (InputManager.GetButtonUp("Shoot1", _playerID))
         {
-            weapon1.Fire();
-            ApplyRecoil(weapon1);
+            shoot1Timer = 0f;
+            Fire(weapon1);
         }
-        else if (InputManager.GetButtonDown("Shoot1"))
+        else if (InputManager.GetButton("Shoot1", _playerID))
         {
-
+            if (shoot1Timer < shoot1Threshold)
+            {
+                shoot1Timer += Time.fixedDeltaTime;
+            }
+            else
+            {
+                RotateWeapon(weapon1);
+            }
+            
         }
 
-        if (InputManager.GetButtonUp("Shoot2"))
+        if (InputManager.GetButtonUp("Shoot2", _playerID))
         {
-            weapon2.Fire();
-            ApplyRecoil(weapon2);
+            shoot2Timer = 0f;
+            Fire(weapon2);
         }
-        else if (InputManager.GetButtonDown("Shoot2"))
+        else if (InputManager.GetButton("Shoot2", _playerID))
         {
-
+            if (shoot2Timer < shoot2Threshold)
+            {
+                shoot2Timer += Time.fixedDeltaTime;
+            }
+            else
+            {
+                RotateWeapon(weapon2, false);
+            }
+            
         }
 
           
@@ -84,6 +103,13 @@ public class PlayerController : MonoBehaviour {
 
 
 
+    }
+
+    private void Fire(ProjectileWeapon weapon)
+    { 
+
+        weapon.Fire();
+        ApplyRecoil(weapon);
     }
 
     void FixedUpdate()
@@ -106,6 +132,18 @@ public class PlayerController : MonoBehaviour {
     void ApplyRecoil(ProjectileWeapon weapon)
     {
         rb2D.AddForce(-(weapon.transform.GetChild(0).right * weapon.recoil));
+    }
+
+    /* Rotates a given weapon 360 degrees by however much that weapon is usually rotated by*/
+    /* If isforward, goes clockwise*/
+    void RotateWeapon(ProjectileWeapon weapon, bool isClockwise = true)
+    {
+            //hacky code to change the direction based on whether it's clockwise or not
+        float direction = isClockwise ? 1 : -1;
+
+        float originalAngle = weapon.transform.localRotation.z;
+        float smoothedAngle = Mathf.SmoothStep(originalAngle, originalAngle + 360f, weapon.rotationSpeed);
+        weapon.transform.localRotation *= Quaternion.AngleAxis(direction*smoothedAngle, Vector3.forward);
     }
 
 

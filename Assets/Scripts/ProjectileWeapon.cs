@@ -6,10 +6,7 @@ using TeamUtility.IO.Examples;
 using TeamUtility.IO;
 
 public class ProjectileWeapon : MonoBehaviour {
-
-    [SerializeField]
-    private PlayerID _playerID;
-
+    public float rotationSpeed;
     public float damage;
     public float recoil;
     public float bulletSpeed;
