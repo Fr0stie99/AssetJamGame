@@ -15,10 +15,10 @@ public class PlayerHealth : MonoBehaviour {
     float currentHealth;
     float respawnTimer = 0f;
     bool dead;
-
+ 
 
     GameObject[] spawns;
-    SpriteRenderer sr;
+    SpriteRenderer sr, weapon1, weapon2;
     Collider2D c;
     Rigidbody2D rb2D;
     void Awake()
@@ -27,6 +27,8 @@ public class PlayerHealth : MonoBehaviour {
         c = GetComponent<Collider2D>();
         rb2D = GetComponent<Rigidbody2D>();
         spawns = GameObject.FindGameObjectsWithTag("Spawn");
+        weapon1 = transform.Find("Weapon1").Find("Gun").GetComponent<SpriteRenderer>();
+        weapon2 = transform.Find("Weapon2").Find("Gun").GetComponent<SpriteRenderer>();
     }
 
 	// Use this for initialization
@@ -56,6 +58,8 @@ public class PlayerHealth : MonoBehaviour {
     {
         currentLives -= 1;
         sr.enabled = false;
+        weapon1.enabled = false;
+        weapon2.enabled = false;
         c.enabled = false;
         rb2D.bodyType = RigidbodyType2D.Static;
         dead = true;
@@ -65,6 +69,8 @@ public class PlayerHealth : MonoBehaviour {
     {
         currentHealth = maxHealth;
         sr.enabled = true;
+        weapon1.enabled = true;
+        weapon2.enabled = true;
         c.enabled = true;
         dead = false;
         rb2D.bodyType = RigidbodyType2D.Dynamic;
