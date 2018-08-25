@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour {
 
         float originalAngle = weapon.transform.localRotation.z;
         float smoothedAngle = Mathf.SmoothStep(originalAngle, originalAngle + 360f, weapon.rotationSpeed);
-        weapon.transform.localRotation *= Quaternion.AngleAxis(direction*smoothedAngle, Vector3.forward);
+        weapon.transform.localRotation *= Quaternion.AngleAxis(direction*smoothedAngle*Time.deltaTime, Vector3.forward);
     }
 
 

@@ -22,7 +22,7 @@ GameObject:
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -53,7 +53,7 @@ GameObject:
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -326,12 +326,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b751bd9b3b5554987898e3370e4eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerID: 0
-  damage: 2
+  rotationSpeed: 0.9
+  damage: 50
   recoil: 500
+  bulletSpeed: 4
   playerBullet: {fileID: 1589156526144796, guid: 3a12f77104b5c3a46978852da53630a0,
     type: 2}
-  fireRate: 0.5
+  fireRate: 2
   firePoint: {fileID: 0}
 --- !u!114 &114394913449442454
 MonoBehaviour:
@@ -375,6 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerID: 0
   speed: 10
+  buttonThreshold: 0.06
 --- !u!114 &114780930336362748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -397,12 +399,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b751bd9b3b5554987898e3370e4eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerID: 0
-  damage: 2
+  rotationSpeed: 0.9
+  damage: 50
   recoil: 500
+  bulletSpeed: 4
   playerBullet: {fileID: 1589156526144796, guid: 3a12f77104b5c3a46978852da53630a0,
     type: 2}
-  fireRate: 0.5
+  fireRate: 2
   firePoint: {fileID: 0}
 --- !u!114 &114963965701289388
 MonoBehaviour:
