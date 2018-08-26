@@ -4,21 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GetWinner : MonoBehaviour {
-    GameObject winner;
+    string winnerName;
+    Sprite winnerPic;
 
 	// Use this for initialization
 	void Awake () {
         GameObject God = GameObject.Find("God");
         if (God != null)
         {
-            winner = God.GetComponent<GameStateManager>().winner;
+            winnerName = God.GetComponent<GameStateManager>().winnerName;
+            winnerPic = God.GetComponent<GameStateManager>().winnerPic;
         }
         Text text = transform.Find("Text").GetComponent<Text>();
         Image image = transform.Find("Image").GetComponent<Image>();
-        if (winner != null)
+        if (winnerName != null)
         {
-           text.text = winner.name;
-           image.sprite = winner.GetComponent<SpriteRenderer>().sprite;
+           text.text = winnerName;
+           image.sprite = winnerPic;
         }
         else
         {

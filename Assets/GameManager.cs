@@ -42,7 +42,8 @@ public class GameManager : MonoBehaviour {
         }
         if (players.Count == 1)
         {
-            attribs.winner = players[0].gameObject;
+            attribs.winnerName = players[0].gameObject.name;
+            attribs.winnerPic = players[0].GetComponent<SpriteRenderer>().sprite;
             gameOver = true;
 
         } else if (players.Count < 1)

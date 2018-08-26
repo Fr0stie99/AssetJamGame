@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4810582945319702}
   - component: {fileID: 114039563794798244}
+  - component: {fileID: 114064054418661876}
   m_Layer: 0
   m_Name: God
   m_TagString: Untagged
@@ -110,6 +111,48 @@ MonoBehaviour:
       type: 0
       axis: 0
       joystick: 0
+    - name: Submit
+      description: 
+      positive: 113
+      negative: 0
+      altPositive: 111
+      altNegative: 0
+      deadZone: 0
+      gravity: 1
+      sensitivity: 1
+      snap: 0
+      invert: 0
+      type: 0
+      axis: 0
+      joystick: 0
+    - name: Cancel
+      description: 
+      positive: 0
+      negative: 101
+      altPositive: 0
+      altNegative: 112
+      deadZone: 0
+      gravity: 1
+      sensitivity: 1
+      snap: 0
+      invert: 0
+      type: 0
+      axis: 0
+      joystick: 0
+    - name: Vertical
+      description: 
+      positive: 273
+      negative: 274
+      altPositive: 0
+      altNegative: 0
+      deadZone: 0
+      gravity: 1
+      sensitivity: 1
+      snap: 0
+      invert: 0
+      type: 0
+      axis: 0
+      joystick: 0
     isExpanded: 1
   - name: Player2Keyboard
     axes:
@@ -143,7 +186,7 @@ MonoBehaviour:
       joystick: 0
     - name: Shoot1
       description: 
-      positive: 0
+      positive: 111
       negative: 0
       altPositive: 0
       altNegative: 0
@@ -155,10 +198,52 @@ MonoBehaviour:
       type: 0
       axis: 0
       joystick: 0
+    - name: Submit
+      description: 
+      positive: 113
+      negative: 0
+      altPositive: 111
+      altNegative: 0
+      deadZone: 0
+      gravity: 1
+      sensitivity: 1
+      snap: 0
+      invert: 0
+      type: 0
+      axis: 0
+      joystick: 0
     - name: Shoot2
       description: 
-      positive: 303
+      positive: 112
       negative: 0
+      altPositive: 0
+      altNegative: 0
+      deadZone: 0
+      gravity: 1
+      sensitivity: 1
+      snap: 0
+      invert: 0
+      type: 0
+      axis: 0
+      joystick: 0
+    - name: Cancel
+      description: 
+      positive: 0
+      negative: 101
+      altPositive: 0
+      altNegative: 112
+      deadZone: 0
+      gravity: 1
+      sensitivity: 1
+      snap: 0
+      invert: 0
+      type: 0
+      axis: 0
+      joystick: 0
+    - name: Vertical
+      description: 
+      positive: 273
+      negative: 274
       altPositive: 0
       altNegative: 0
       deadZone: 0
@@ -176,3 +261,15 @@ MonoBehaviour:
   _playerFourDefault: 
   _dontDestroyOnLoad: 1
   _ignoreTimescale: 0
+--- !u!114 &114064054418661876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1558587650158858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcf58215a5c088c4a94386f44b90ac1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winner: {fileID: 0}
