@@ -50,17 +50,6 @@ public class PlayerController : MonoBehaviour {
         if (gm.isGrounded())
             rb2D.velocity = new Vector2(horizontal * speed, rb2D.velocity.y);
 
-        if (InputManager.GetButton("Leap") && gm.isGrounded())
-        {
-            Charge();
-        }
-        else if (InputManager.GetButtonUp("Leap") && hasCharged)
-        {
-            leapManager.Launch();
-            leapManager.ResetPower();
-            hasCharged = false;
-        }
-
         if (InputManager.GetButtonUp("Shoot1", _playerID))
         {
             shoot1Timer = 0f;
@@ -119,15 +108,6 @@ public class PlayerController : MonoBehaviour {
         
     }
 
-    void Charge()
-    {
-        //TODO: only call new trajectory if either value changes
-        //TODO: change to use angle + power
-        leapManager.IncreasePower();
-        leapManager.UpdateAndDrawTrajectory(Camera.main.ScreenToWorldPoint(InputManager.mousePosition));
-        hasCharged = true;
-        
-    }
 
     void ApplyRecoil(ProjectileWeapon weapon)
     {
