@@ -16,14 +16,14 @@ public class PlayerController : MonoBehaviour {
     Rigidbody2D rb2D;
     GroundedManager gm;
     PlayerHealth health;
-    ProjectileWeapon weapon1, weapon2;
+    ProjectileWeapon weapon1, weapon2, storeWeapon;
 
 
-    float horizontal, shoot1Timer = 0f, shoot2Timer = 0f, shoot1Threshold, shoot2Threshold;
+    float horizontal, shoot1Timer = 0f, shoot2Timer = 0f, shoot1Threshold, shoot2Threshold, recoilForce;
 
     public float speed, buttonThreshold;
 
-    bool hasCharged;
+    bool hasCharged, recoilOn;
 	// Use this for initialization
 	void Awake ()
     {
@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour {
         weapon2 = transform.Find("Weapon2").GetComponent<ProjectileWeapon>();
         shoot1Threshold = buttonThreshold;
         shoot2Threshold = buttonThreshold;
+        storeWeapon = weapon1;
+        
     }
 	
 	// Update is called once per frame
@@ -86,7 +88,7 @@ public class PlayerController : MonoBehaviour {
             
         }
 
-          
+        Recoil(storeWeapon); 
 
         //grounded check
 
@@ -99,6 +101,26 @@ public class PlayerController : MonoBehaviour {
 
         weapon.Fire();
         ApplyRecoil(weapon);
+        recoilOn = true;
+        Debug.Log("recoilOn true");
+        storeWeapon = weapon;
+    }
+
+    private void Recoil(ProjectileWeapon weapon)
+    {
+        if (recoilOn && recoilForce > 0)
+        {
+            rb2D.velocity = -(storeWeapon.transform.Find("Gun").right * recoilForce);
+            recoilForce -= recoilForce;
+        }
+        else {
+            if(recoilForce <= 0)
+            {
+                recoilOn = false;
+                Debug.Log("recoilOn false");
+                recoilForce = weapon.recoilMax;
+            }
+        }
     }
 
     void FixedUpdate()
@@ -111,7 +133,7 @@ public class PlayerController : MonoBehaviour {
 
     void ApplyRecoil(ProjectileWeapon weapon)
     {
-        rb2D.AddForce(-(weapon.transform.GetChild(0).right * weapon.recoil));
+        //rb2D.AddForce(-(weapon.transform.GetChild(0).right * weapon.recoil));
     }
 
     /* Rotates a given weapon 360 degrees by however much that weapon is usually rotated by*/

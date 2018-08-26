@@ -8,7 +8,8 @@ using TeamUtility.IO;
 public class ProjectileWeapon : MonoBehaviour {
     public float rotationSpeed;
     public float damage;
-    public float recoil;
+    public float recoil = 0f;
+    public float recoilMax = 20f;
     public float bulletSpeed;
     public GameObject playerBullet;
     Vector2 bulletPos;
