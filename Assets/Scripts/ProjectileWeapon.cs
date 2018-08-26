@@ -36,7 +36,7 @@ public class ProjectileWeapon : MonoBehaviour {
         //instantiate the projectile
         GameObject bullet = Instantiate(playerBullet, bulletPos, Quaternion.identity);
         bullet.GetComponent<PlayerBullet>().SetAttributes(damage, bulletSpeed);
-        bullet.transform.rotation = transform.GetChild(0).rotation;
+        bullet.transform.rotation = transform.Find("Gun").rotation;
         
     }
 

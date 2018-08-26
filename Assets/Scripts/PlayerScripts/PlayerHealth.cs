@@ -39,6 +39,12 @@ public class PlayerHealth : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (NoLives())
+        {
+            return;
+        }
+            
+
 		if (currentHealth <= 0 && !IsDead())
         {
             Die();
@@ -86,5 +92,10 @@ public class PlayerHealth : MonoBehaviour {
     {
         currentHealth -= damage;
         //TODO: perhaps add pushback when damaged?
+    }
+
+    public bool NoLives()
+    {
+        return currentLives <= 0;
     }
 }
