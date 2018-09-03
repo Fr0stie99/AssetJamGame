@@ -6,6 +6,7 @@ using TeamUtility.IO.Examples;
 using TeamUtility.IO;
 
 public class ProjectileWeapon : MonoBehaviour {
+
     public float rotationSpeed;
     public float damage;
     public float recoil = 0f;
@@ -15,6 +16,7 @@ public class ProjectileWeapon : MonoBehaviour {
     Vector2 bulletPos;
     public float fireRate = 0.5f;
     float nextFire = 0.0f;
+
     [HideInInspector]
     public Transform firePoint;
 

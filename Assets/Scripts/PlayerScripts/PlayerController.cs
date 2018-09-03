@@ -19,9 +19,9 @@ public class PlayerController : MonoBehaviour {
     ProjectileWeapon weapon1, weapon2, storeWeapon;
 
 
-    float horizontal, shoot1Timer = 0f, shoot2Timer = 0f, shoot1Threshold, shoot2Threshold, recoilForce;
+    float horizontal, shoot1Timer = 0f, shoot2Timer = 0f, shoot1Threshold, shoot2Threshold, recoilForce, rotSpeed, linearRot;
 
-    public float speed, buttonThreshold;
+    public float speed, buttonThreshold, angleSpeed = 360f;
 
     bool hasCharged, recoilOn;
 	// Use this for initialization
@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour {
         shoot1Threshold = buttonThreshold;
         shoot2Threshold = buttonThreshold;
         storeWeapon = weapon1;
+        linearRot = 0f;
         
     }
 	
@@ -67,6 +68,7 @@ public class PlayerController : MonoBehaviour {
         {
             shoot1Timer = 0f;
             Fire(weapon1);
+            linearRot = 0f;
         }
         else if (InputManager.GetButton("Shoot1", _playerID))
         {
@@ -75,8 +77,9 @@ public class PlayerController : MonoBehaviour {
                 shoot1Timer += Time.fixedDeltaTime;
             }
             else
-            {
-                RotateWeapon(weapon1);
+            {  
+                RotateWeapon(weapon1, false);
+                
             }
             
         }
@@ -85,6 +88,7 @@ public class PlayerController : MonoBehaviour {
         {
             shoot2Timer = 0f;
             Fire(weapon2);
+            linearRot = 0f;
         }
         else if (InputManager.GetButton("Shoot2", _playerID))
         {
@@ -111,12 +115,12 @@ public class PlayerController : MonoBehaviour {
     { 
 
         weapon.Fire();
-        ApplyRecoil(weapon);
         recoilOn = true;
         Debug.Log("recoilOn true");
         storeWeapon = weapon;
     }
 
+    //creates recoil based on rigidbody velocity
     private void Recoil(ProjectileWeapon weapon)
     {
         if (recoilOn && recoilForce > 0)
@@ -151,21 +155,24 @@ public class PlayerController : MonoBehaviour {
         
     }
 
-    void ApplyRecoil(ProjectileWeapon weapon)
-    {
-        //rb2D.AddForce(-(weapon.transform.GetChild(0).right * weapon.recoil));
-    }
 
     /* Rotates a given weapon 360 degrees by however much that weapon is usually rotated by*/
     /* If isforward, goes clockwise*/
     void RotateWeapon(ProjectileWeapon weapon, bool isClockwise = true)
     {
+        if (linearRot < 1)
+        {
+            linearRot += 0.01f;
+        }
             //hacky code to change the direction based on whether it's clockwise or not
         float direction = isClockwise ? 1 : -1;
+        rotSpeed = Mathf.Lerp(0, weapon.rotationSpeed, linearRot);
 
         float originalAngle = weapon.transform.localRotation.z;
-        float smoothedAngle = Mathf.SmoothStep(originalAngle, originalAngle + 360f, weapon.rotationSpeed);
+        float smoothedAngle = Mathf.SmoothStep(originalAngle, originalAngle + angleSpeed, rotSpeed);
         weapon.transform.localRotation *= Quaternion.AngleAxis(direction*smoothedAngle*Time.deltaTime, Vector3.forward);
+
+        Debug.Log(linearRot);
     }
 
 
