@@ -335,6 +335,16 @@ Prefab:
       propertyPath: _playerID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114869335186631716, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: recoil
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000100659136592, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: recoil
+      value: 600
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}
   m_IsPrefabAsset: 0
@@ -953,6 +963,11 @@ Prefab:
         type: 2}
       propertyPath: recoil
       value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 114729337482546346, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: buttonThreshold
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}
