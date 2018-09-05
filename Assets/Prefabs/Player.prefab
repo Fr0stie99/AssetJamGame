@@ -150,9 +150,9 @@ GameObject:
   - component: {fileID: 50568900522779246}
   - component: {fileID: 61211000847051242}
   - component: {fileID: 114729337482546346}
-  - component: {fileID: 114394913449442454}
   - component: {fileID: 114780930336362748}
   - component: {fileID: 114963965701289388}
+  - component: {fileID: 95400819849027870}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -375,6 +375,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &95400819849027870
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1739799906425902}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd81f2696ddd96f44a3ee7d2ff4a23f3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114000100659136592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -387,31 +405,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 5
-  damage: 50
-  recoil: 500
+  damage: 4
+  recoil: 20
   bulletSpeed: 4
+  fireRate: 2
+  cooldownRate: 0.6
   playerBullet: {fileID: 1589156526144796, guid: 3a12f77104b5c3a46978852da53630a0,
     type: 2}
-  fireRate: 2
   firePoint: {fileID: 0}
---- !u!114 &114394913449442454
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1739799906425902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e6b380792d082a41b3775505fd885ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BASE_FORCE: 1
-  MAX_FORCE: 10
-  FORCE_INCREMENT: 10
-  DOT_TIME_STEP: 0.05
-  NUM_DOTS_TO_SHOW: 30
-  trajectoryDotPrefab: {fileID: 1618458690111052, guid: 8122218e81fbdb348a7dad9e0ea7754f,
-    type: 2}
 --- !u!114 &114498533060004038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -435,8 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerID: 0
-  speed: 10
-  buttonThreshold: 0.08
+  angleSpeed: 360
 --- !u!114 &114780930336362748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -460,12 +460,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 5
-  damage: 50
-  recoil: 500
+  damage: 4
+  recoil: 20
   bulletSpeed: 4
+  fireRate: 1
+  cooldownRate: 0.2
   playerBullet: {fileID: 1589156526144796, guid: 3a12f77104b5c3a46978852da53630a0,
     type: 2}
-  fireRate: 2
   firePoint: {fileID: 0}
 --- !u!114 &114963965701289388
 MonoBehaviour:
@@ -480,7 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLives: 3
   maxHealth: 100
-  maxRespawnTime: 3
+  maxRespawnTime: 1
 --- !u!212 &212070105769851150
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -516,8 +517,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5487f1ffdc7cbe344841df11f665b87e, type: 3}
-  m_Color: {r: 0.30113026, g: 0.359603, b: 0.9528302, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4abbe20b78d04a94e94b328ca00b6f5c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

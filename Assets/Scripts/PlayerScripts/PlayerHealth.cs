@@ -6,6 +6,7 @@ using TeamUtility.IO;
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public class PlayerHealth : MonoBehaviour {
 
     public int maxLives = 3;
@@ -22,6 +23,7 @@ public class PlayerHealth : MonoBehaviour {
     SpriteRenderer sr, weapon1, weapon2;
     Collider2D c;
     Rigidbody2D rb2D;
+    Animator anim;
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -31,6 +33,7 @@ public class PlayerHealth : MonoBehaviour {
         weapon1 = transform.Find("Weapon1").Find("Gun").GetComponent<SpriteRenderer>();
         weapon2 = transform.Find("Weapon2").Find("Gun").GetComponent<SpriteRenderer>();
         id = GetComponent<PlayerController>()._playerID;
+        anim = GetComponent<Animator>();
 
     }
 
@@ -65,24 +68,31 @@ public class PlayerHealth : MonoBehaviour {
 
     void Die()
     {
+        anim.Play("playerdead");
         currentLives -= 1;
         c.enabled = false;
-        SetVisibility(false);
+        
         rb2D.bodyType = RigidbodyType2D.Static;
         dead = true;
         respawnTimer = 0f;
     }
     public void Respawn()
     {
+        anim.Play("playeridle");
         currentHealth = maxHealth;
-        SetVisibility(true);
         c.enabled = true;
         dead = false;
+        SetVisibility(true);
         rb2D.bodyType = RigidbodyType2D.Dynamic;
         transform.position = spawns[Random.Range(0, spawns.Length)].transform.position; //picks a random spawn, gets its position, sets it
     }
 
-    public void SetVisibility(bool isVisible)
+
+    public void MakeInvisible()
+    {
+        SetVisibility(false);
+    }
+    private void SetVisibility(bool isVisible)
     {
         sr.enabled = isVisible;
         weapon1.enabled = isVisible;
@@ -96,7 +106,7 @@ public class PlayerHealth : MonoBehaviour {
 
     public void HurtMe(float damage)
     {
-        
+        anim.Play("playerhurt");
         currentHealth -= damage;
     }
 
