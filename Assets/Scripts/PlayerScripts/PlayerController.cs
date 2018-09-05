@@ -5,7 +5,6 @@ using UnityEngine;
 using TeamUtility.IO.Examples;
 using TeamUtility.IO;
 
-[RequireComponent(typeof(TrajectoryGenerator))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(GroundedManager))]
 [RequireComponent(typeof(PlayerHealth))]
@@ -27,7 +26,6 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Awake ()
     {
-        leapManager = GetComponent<TrajectoryGenerator>();
         rb2D = GetComponent<Rigidbody2D>();
         gm = GetComponent<GroundedManager>();
         health = GetComponent<PlayerHealth>();
@@ -55,18 +53,7 @@ public class PlayerController : MonoBehaviour {
 
         if (InputManager.GetButtonUp("Shoot1", _playerID))
         {
-            //if the cooldown time is passed, then you are able to shoot
-            if (shoot1Timer > shoot1Threshold)
-            {
-                shoot1Timer = 0f;
-                Fire(weapon1);
-                linearRot = 0f;
-            }
-            else
-            {
-                //check if cooldown works
-                Debug.Log("weap1 cooldown!");
-            }
+            Fire(weapon1);
         }
         else if (InputManager.GetButton("Shoot1", _playerID))
         {
@@ -87,24 +74,14 @@ public class PlayerController : MonoBehaviour {
 
             }*/
 
-            RotateWeapon(weapon1, false);
+            RotateWeapon(weapon1, true);
         }
 
         shoot1Timer += Time.fixedDeltaTime;
 
         if (InputManager.GetButtonUp("Shoot2", _playerID))
         {
-            if (shoot2Timer > shoot2Threshold)
-            {
-                shoot2Timer = 0f;
-                Fire(weapon2);
-                linearRot = 0f;
-            }
-            else
-            {
-                //check if cooldown works
-                Debug.Log("weap2 cooldown!");
-            }
+            Fire(weapon2);
 
         }
         else if (InputManager.GetButton("Shoot2", _playerID))
@@ -138,11 +115,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Fire(ProjectileWeapon weapon)
-    { 
-
+    {
+        linearRot = 0f;
         weapon.Fire();
-        recoilOn = true;
-        storeWeapon = weapon;
     }
 
 
@@ -150,7 +125,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (recoilOn && recoilForce > 0)
         {
-            rb2D.velocity = -(storeWeapon.transform.Find("Gun").right * recoilForce);
+            rb2D.velocity = -(weapon.transform.Find("Gun").right * recoilForce);
             recoilForce -= recoilForce;
         }
         else {
@@ -186,6 +161,12 @@ public class PlayerController : MonoBehaviour {
         float smoothedAngle = Mathf.SmoothStep(originalAngle, originalAngle + angleSpeed, rotSpeed);
         weapon.transform.localRotation *= Quaternion.AngleAxis(direction*smoothedAngle*Time.deltaTime, Vector3.forward);
 
+    }
+
+    public void setWeapon(ProjectileWeapon weapon)
+    {
+        recoilOn = true;
+        storeWeapon = weapon;
     }
 
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TeamUtility.IO;
 
 public class PlayerBullet : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class PlayerBullet : MonoBehaviour {
     Transform firePoint;
     Transform store;
     float distance;
+    PlayerID _id;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,11 +23,19 @@ public class PlayerBullet : MonoBehaviour {
             rb.velocity = transform.right * projSpeed;
 	}
 
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
 
     //Destroy projectile upon collision
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            return;
+        }
         
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -35,16 +45,14 @@ public class PlayerBullet : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    public void SetAttributes(float damage, float bulletSpeed)
+    public void SetAttributes(float damage, float bulletSpeed, PlayerID id)
     {
         this.damage = damage;
         projSpeed = bulletSpeed;
+        this._id = id;
     }
 
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
+
 }
 
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TeamUtility.IO;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Collider2D))]
@@ -15,7 +16,7 @@ public class PlayerHealth : MonoBehaviour {
     float currentHealth;
     float respawnTimer = 0f;
     bool dead;
- 
+    PlayerID id;
 
     GameObject[] spawns;
     SpriteRenderer sr, weapon1, weapon2;
@@ -29,6 +30,8 @@ public class PlayerHealth : MonoBehaviour {
         spawns = GameObject.FindGameObjectsWithTag("Spawn");
         weapon1 = transform.Find("Weapon1").Find("Gun").GetComponent<SpriteRenderer>();
         weapon2 = transform.Find("Weapon2").Find("Gun").GetComponent<SpriteRenderer>();
+        id = GetComponent<PlayerController>()._playerID;
+
     }
 
 	// Use this for initialization
@@ -90,6 +93,7 @@ public class PlayerHealth : MonoBehaviour {
 
     public void HurtMe(float damage)
     {
+        
         currentHealth -= damage;
         //TODO: perhaps add pushback when damaged?
     }
