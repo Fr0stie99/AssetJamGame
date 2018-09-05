@@ -335,6 +335,16 @@ Prefab:
       propertyPath: _playerID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114869335186631716, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: recoil
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000100659136592, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: recoil
+      value: 600
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}
   m_IsPrefabAsset: 0
@@ -375,9 +385,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSpeed: 2
-  sizeStuff: 1
-  cameraBuffer: {x: 5, y: 0, z: 0}
-  defaultSize: 9
+  sizeStuff: 2
+  cameraBuffer: {x: 0, y: 0, z: 0}
+  defaultSize: 7
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -952,13 +962,28 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114869335186631716, guid: 673be29ad6f70594ab896f8c0e65ce5e,
         type: 2}
-      propertyPath: recoilMax
-      value: 20
+      propertyPath: bulletSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114869335186631716, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: rotationSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114869335186631716, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: recoil
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 114000100659136592, guid: 673be29ad6f70594ab896f8c0e65ce5e,
         type: 2}
-      propertyPath: recoilMax
-      value: 20
+      propertyPath: recoil
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 114729337482546346, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: buttonThreshold
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}

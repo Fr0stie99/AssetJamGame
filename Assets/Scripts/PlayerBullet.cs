@@ -40,5 +40,11 @@ public class PlayerBullet : MonoBehaviour {
         this.damage = damage;
         projSpeed = bulletSpeed;
     }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }
+
 
