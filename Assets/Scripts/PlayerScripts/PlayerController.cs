@@ -15,10 +15,10 @@ public class PlayerController : MonoBehaviour {
     Rigidbody2D rb2D;
     GroundedManager gm;
     PlayerHealth health;
-    ProjectileWeapon weapon1, weapon2, storeWeapon;
+    ProjectileWeapon weapon1, weapon2;
+    PlayerPushable storeWeapon;
 
-
-    float horizontal, shoot1Timer = 0f, shoot2Timer = 0f, shoot1Threshold, shoot2Threshold, recoilForce, rotSpeed, linearRot;
+    float horizontal, shoot1Timer = 0f, shoot2Timer = 0f, shoot1Threshold, shoot2Threshold, recoilForce =0f, rotSpeed, linearRot;
 
     public float speed, buttonThreshold, angleSpeed = 360f;
 
@@ -106,12 +106,6 @@ public class PlayerController : MonoBehaviour {
 
         shoot2Timer += Time.fixedDeltaTime;
 
-        Recoil(storeWeapon); 
-
-        //grounded check
-
-
-
     }
 
     private void Fire(ProjectileWeapon weapon)
@@ -120,26 +114,21 @@ public class PlayerController : MonoBehaviour {
         weapon.Fire();
     }
 
-
-    public void Recoil(ProjectileWeapon weapon)
+    //recoil/pushback handling
+    void FixedUpdate()
     {
         if (recoilOn && recoilForce > 0)
         {
-            rb2D.velocity = -(weapon.transform.Find("Gun").right * recoilForce);
+            rb2D.velocity = -(storeWeapon.GetContactPoint() * recoilForce);
             recoilForce -= recoilForce;
         }
         else {
-            if(recoilForce <= 0)
+            if (recoilForce <= 0)
             {
                 recoilOn = false;
-                recoilForce = weapon.recoilMax;
+                recoilForce = storeWeapon.GetPushback();
             }
         }
-    }
-
-    void FixedUpdate()
-    {
-        Recoil(storeWeapon);
 
 
     }
@@ -163,10 +152,10 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    public void setWeapon(ProjectileWeapon weapon)
+    public void ApplyRecoil(PlayerPushable forceSource)
     {
         recoilOn = true;
-        storeWeapon = weapon;
+        storeWeapon = forceSource;
     }
 
 

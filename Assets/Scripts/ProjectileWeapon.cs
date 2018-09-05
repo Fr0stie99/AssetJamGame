@@ -5,9 +5,9 @@ using UnityEngine;
 using TeamUtility.IO.Examples;
 using TeamUtility.IO;
 
-public class ProjectileWeapon : MonoBehaviour {
+public class ProjectileWeapon : MonoBehaviour, PlayerPushable {
 
-    public float rotationSpeed, damage, recoil = 0f, recoilMax = 20f, bulletSpeed, fireRate = 0.5f, cooldownRate = 0.2f;
+    public float rotationSpeed, damage, recoil = 20f, bulletSpeed, fireRate = 0.5f, cooldownRate = 0.2f;
     public GameObject playerBullet;
     Vector2 bulletPos;
     PlayerID id;
@@ -38,9 +38,9 @@ public class ProjectileWeapon : MonoBehaviour {
 
         //instantiate the projectile
         GameObject bullet = Instantiate(playerBullet, bulletPos, Quaternion.identity);
-        bullet.GetComponent<PlayerBullet>().SetAttributes(damage, bulletSpeed, id);
+        bullet.GetComponent<PlayerBullet>().SetAttributes(damage, bulletSpeed, recoil, id);
         bullet.transform.rotation = transform.Find("Gun").rotation;
-        player.setWeapon(this);
+        player.ApplyRecoil(this);
         
     }
 
@@ -49,5 +49,14 @@ public class ProjectileWeapon : MonoBehaviour {
         nextFire += Time.fixedDeltaTime;
     }
 
+    public float GetPushback()
+    {
+        return recoil;
+    }
+
+    public Vector3 GetContactPoint()
+    {
+        return transform.Find("Gun").right;
+    }
     
 }
