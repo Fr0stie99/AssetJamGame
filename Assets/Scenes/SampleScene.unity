@@ -371,8 +371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSpeed: 3
-  sizeStuff: 1
-  cameraBuffer: {x: 2, y: 0, z: 0}
+  sizeStuff: 0.6
+  cameraBuffer: {x: 4, y: 0, z: 0}
   defaultSize: 2
 --- !u!20 &519420031
 Camera:
