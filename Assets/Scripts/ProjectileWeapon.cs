@@ -5,7 +5,7 @@ using UnityEngine;
 using TeamUtility.IO.Examples;
 using TeamUtility.IO;
 
-public class ProjectileWeapon : MonoBehaviour, PlayerPushable {
+public class ProjectileWeapon : MonoBehaviour, PlayerPushable, Weapon {
 
     public float rotationSpeed, damage, recoil = 20f, bulletSpeed, fireRate = 0.5f, cooldownRate = 0.2f;
     public GameObject playerBullet;

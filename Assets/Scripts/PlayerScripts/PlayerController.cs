@@ -15,12 +15,13 @@ public class PlayerController : MonoBehaviour {
     Rigidbody2D rb2D;
     GroundedManager gm;
     PlayerHealth health;
-    ProjectileWeapon weapon1, weapon2;
+    Hand hand1, hand2;
     PlayerPushable storeWeapon;
 
     float horizontal, shoot1Timer = 0f, shoot2Timer = 0f, shoot1Threshold, shoot2Threshold, recoilForce =0f, rotSpeed, linearRot;
 
     public float angleSpeed = 360f;
+    public float rotationSpeed = 5f;
 
     bool hasCharged, recoilOn;
 	// Use this for initialization
@@ -29,11 +30,9 @@ public class PlayerController : MonoBehaviour {
         rb2D = GetComponent<Rigidbody2D>();
         gm = GetComponent<GroundedManager>();
         health = GetComponent<PlayerHealth>();
-        weapon1 = transform.Find("Weapon1").GetComponent<ProjectileWeapon>();
-        weapon2 = transform.Find("Weapon2").GetComponent<ProjectileWeapon>();
-        shoot1Threshold = weapon1.cooldownRate;
-        shoot2Threshold = weapon2.cooldownRate;
-        storeWeapon = weapon1;
+        hand1 = transform.Find("Hand1").GetComponent<Hand>();
+        hand2 = transform.Find("Hand2").GetComponent<Hand>();
+        storeWeapon = hand1.currentWeapon;
         linearRot = 0f;
         
     }
@@ -48,53 +47,23 @@ public class PlayerController : MonoBehaviour {
 
         if (InputManager.GetButtonUp("Shoot1", _playerID))
         {
-            Fire(weapon1);
+            Fire(hand1);
         }
         else if (InputManager.GetButton("Shoot1", _playerID))
         {
-            //this enables to shoot while pressing down the button
-            //commented out because it makes movement difficult
-
-            /*if (shoot1Timer > shoot1Threshold)
-            {
-                Fire(weapon1);
-                shoot1Timer = 0f;
-                linearRot = 0f;
-            }
-            else
-            {
-                shoot1Timer += Time.fixedDeltaTime;
-                RotateWeapon(weapon1, false);
-                Debug.Log(shoot1Timer);
-
-            }*/
-
-            RotateWeapon(weapon1, true);
+            RotateWeapon(hand1, true);
         }
 
         shoot1Timer += Time.fixedDeltaTime;
 
         if (InputManager.GetButtonUp("Shoot2", _playerID))
         {
-            Fire(weapon2);
+            Fire(hand2);
 
         }
         else if (InputManager.GetButton("Shoot2", _playerID))
         {
-            /* if (shoot2Timer > shoot2Threshold)
-             {
-                 Fire(weapon2);
-                 shoot2Timer = 0f;
-                 linearRot = 0f;
-             }
-             else
-             {
-                 shoot2Timer += Time.fixedDeltaTime;
-                 RotateWeapon(weapon2, false);
-                 Debug.Log(shoot2Timer);
-             }*/
-
-            RotateWeapon(weapon2, false);
+            RotateWeapon(hand2, false);
 
         }
 
@@ -103,7 +72,7 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    private void Fire(ProjectileWeapon weapon)
+    private void Fire(Hand weapon)
     {
         linearRot = 0f;
         weapon.Fire();
@@ -131,7 +100,7 @@ public class PlayerController : MonoBehaviour {
 
     /* Rotates a given weapon 360 degrees by however much that weapon is usually rotated by*/
     /* If isforward, goes clockwise*/
-    void RotateWeapon(ProjectileWeapon weapon, bool isClockwise = true)
+    void RotateWeapon(Hand weapon, bool isClockwise = true)
     {
         if (linearRot < 1)
         {
@@ -139,7 +108,7 @@ public class PlayerController : MonoBehaviour {
         }
             //hacky code to change the direction based on whether it's clockwise or not
         float direction = isClockwise ? 1 : -1;
-        rotSpeed = Mathf.Lerp(0, weapon.rotationSpeed, linearRot);
+        rotSpeed = Mathf.Lerp(0, rotationSpeed, linearRot);
 
         float originalAngle = weapon.transform.localRotation.z;
         float smoothedAngle = Mathf.SmoothStep(originalAngle, originalAngle + angleSpeed, rotSpeed);
