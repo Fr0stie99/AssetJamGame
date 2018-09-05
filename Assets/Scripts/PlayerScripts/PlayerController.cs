@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour {
             
         }
 
-        Recoil(storeWeapon); 
+        
 
         //grounded check
 
@@ -100,13 +100,13 @@ public class PlayerController : MonoBehaviour {
     { 
 
         weapon.Fire();
-        ApplyRecoil(weapon);
+        //ApplyRecoil(weapon);
         recoilOn = true;
         Debug.Log("recoilOn true");
         storeWeapon = weapon;
     }
 
-    private void Recoil(ProjectileWeapon weapon)
+    public void Recoil(ProjectileWeapon weapon)
     {
         if (recoilOn && recoilForce > 0)
         {
@@ -125,9 +125,9 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        
+        Recoil(storeWeapon);
 
-        
+
     }
 
 

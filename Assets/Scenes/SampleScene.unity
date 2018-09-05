@@ -950,6 +950,16 @@ Prefab:
       propertyPath: recoilForceMax
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114869335186631716, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: recoilMax
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000100659136592, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: recoilMax
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}
   m_IsPrefabAsset: 0
