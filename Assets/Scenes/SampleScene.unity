@@ -370,10 +370,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b288de39f6f01d140b1b3d3c63dafd61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSpeed: 2
+  cameraSpeed: 3
   sizeStuff: 1
-  cameraBuffer: {x: 7, y: 0, z: 0}
-  defaultSize: 4
+  cameraBuffer: {x: 2, y: 0, z: 0}
+  defaultSize: 2
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

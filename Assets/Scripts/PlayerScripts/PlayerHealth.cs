@@ -20,18 +20,16 @@ public class PlayerHealth : MonoBehaviour {
     PlayerID id;
 
     GameObject[] spawns;
-    SpriteRenderer sr, weapon1, weapon2;
+    SpriteRenderer[] renderers;
     Collider2D c;
     Rigidbody2D rb2D;
     Animator anim;
     void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
+        renderers = GetComponentsInChildren<SpriteRenderer>();
         c = GetComponent<Collider2D>();
         rb2D = GetComponent<Rigidbody2D>();
         spawns = GameObject.FindGameObjectsWithTag("Spawn");
-        weapon1 = transform.Find("Weapon1").Find("Gun").GetComponent<SpriteRenderer>();
-        weapon2 = transform.Find("Weapon2").Find("Gun").GetComponent<SpriteRenderer>();
         id = GetComponent<PlayerController>()._playerID;
         anim = GetComponent<Animator>();
 
@@ -94,9 +92,10 @@ public class PlayerHealth : MonoBehaviour {
     }
     private void SetVisibility(bool isVisible)
     {
-        sr.enabled = isVisible;
-        weapon1.enabled = isVisible;
-        weapon2.enabled = isVisible;
+        foreach (SpriteRenderer renderer in renderers)
+        {
+            renderer.enabled = isVisible;
+        }
         
     }
     public bool IsDead()
