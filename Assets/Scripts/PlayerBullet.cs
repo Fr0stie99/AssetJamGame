@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TeamUtility.IO;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public class PlayerBullet : MonoBehaviour, PlayerPushable {
 
     float damage;
@@ -12,18 +14,22 @@ public class PlayerBullet : MonoBehaviour, PlayerPushable {
     Transform store;
     float distance;
     PlayerID _id;
+    Animator anim;
 
     Vector3 contactPoint;
     float pushback;
+    bool isDead = false;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
     // Use this for initialization
 	
 	// Update is called once per frame
-	void Update () {
-            rb.velocity = transform.right * projSpeed;
+	void FixedUpdate () {
+       if (!isDead) { rb.velocity = transform.right * projSpeed; }
+            
 	}
 
     private void OnBecameInvisible()
@@ -43,12 +49,13 @@ public class PlayerBullet : MonoBehaviour, PlayerPushable {
         if (collision.gameObject.CompareTag("Player"))
         {
             contactPoint = -rb.velocity.normalized;
-            Debug.DrawLine(collision.transform.position, transform.position, Color.white, 30f);
             collision.gameObject.GetComponent<PlayerHealth>().HurtMe(damage);
             collision.gameObject.GetComponent<PlayerController>().ApplyRecoil(this);
             
         }
-        Destroy(gameObject);
+        rb.velocity = Vector2.zero;
+        isDead = true;
+        anim.Play("explosion");
     }
 
     public void SetAttributes(float damage, float bulletSpeed, float pushback, PlayerID id)

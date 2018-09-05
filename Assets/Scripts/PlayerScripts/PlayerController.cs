@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour {
 
     float horizontal, shoot1Timer = 0f, shoot2Timer = 0f, shoot1Threshold, shoot2Threshold, recoilForce =0f, rotSpeed, linearRot;
 
-    public float speed, buttonThreshold, angleSpeed = 360f;
+    public float angleSpeed = 360f;
 
     bool hasCharged, recoilOn;
 	// Use this for initialization
@@ -45,11 +45,6 @@ public class PlayerController : MonoBehaviour {
         {
             return;
         }
-
-        horizontal = InputManager.GetAxisRaw("Horizontal");
-
-        if (gm.isGrounded())
-            rb2D.velocity = new Vector2(horizontal * speed, rb2D.velocity.y);
 
         if (InputManager.GetButtonUp("Shoot1", _playerID))
         {

@@ -155,6 +155,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &142940397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1739799906425902, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1211059593}
+--- !u!95 &142940398
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 142940397}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &179294890
 Prefab:
   m_ObjectHideFlags: 0
@@ -318,17 +341,17 @@ Prefab:
     - target: {fileID: 212070105769851150, guid: 673be29ad6f70594ab896f8c0e65ce5e,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.9529412
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212070105769851150, guid: 673be29ad6f70594ab896f8c0e65ce5e,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.30196083
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212070105769851150, guid: 673be29ad6f70594ab896f8c0e65ce5e,
         type: 2}
       propertyPath: m_Color.b
-      value: 0.6989987
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114729337482546346, guid: 673be29ad6f70594ab896f8c0e65ce5e,
         type: 2}
@@ -345,6 +368,17 @@ Prefab:
       propertyPath: recoil
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 50568900522779246, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: m_GravityScale
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 212070105769851150, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b316dc9adfd1aa849aaffa512e66ad1b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}
   m_IsPrefabAsset: 0
@@ -503,6 +537,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &979213663
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4779628152161096, guid: 3a12f77104b5c3a46978852da53630a0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779628152161096, guid: 3a12f77104b5c3a46978852da53630a0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779628152161096, guid: 3a12f77104b5c3a46978852da53630a0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779628152161096, guid: 3a12f77104b5c3a46978852da53630a0, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779628152161096, guid: 3a12f77104b5c3a46978852da53630a0, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779628152161096, guid: 3a12f77104b5c3a46978852da53630a0, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779628152161096, guid: 3a12f77104b5c3a46978852da53630a0, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779628152161096, guid: 3a12f77104b5c3a46978852da53630a0, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3a12f77104b5c3a46978852da53630a0, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &985844346
 Prefab:
   m_ObjectHideFlags: 0
@@ -1010,7 +1086,34 @@ Prefab:
       propertyPath: damage
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 50568900522779246, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: m_GravityScale
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 212070105769851150, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4abbe20b78d04a94e94b328ca00b6f5c,
+        type: 3}
+    - target: {fileID: 212070105769851150, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212070105769851150, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212070105769851150, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114394913449442454, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &1360413348
@@ -1199,3 +1302,26 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1ea52b3b04acde46a1fe238277e41e1, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1619208135 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1558587650158858, guid: 6be21cb7041ebb2468fd36c1cc737a7d,
+    type: 2}
+  m_PrefabInternal: {fileID: 179294890}
+--- !u!114 &1619208136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1619208135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a2a37cd1ec0fa41bde573e9aa3faca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angleSpeed: 360
+  gravityScale: 4
+  linearDrag: 0
+  angularDrag: 0.05
+  maxLives: 3
+  maxHealth: 100
+  maxRespawnTime: 1

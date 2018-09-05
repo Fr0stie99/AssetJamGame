@@ -66,10 +66,8 @@ public class PlayerHealth : MonoBehaviour {
     void Die()
     {
         currentLives -= 1;
-        sr.enabled = false;
-        weapon1.enabled = false;
-        weapon2.enabled = false;
         c.enabled = false;
+        SetVisibility(false);
         rb2D.bodyType = RigidbodyType2D.Static;
         dead = true;
         respawnTimer = 0f;
@@ -77,15 +75,20 @@ public class PlayerHealth : MonoBehaviour {
     public void Respawn()
     {
         currentHealth = maxHealth;
-        sr.enabled = true;
-        weapon1.enabled = true;
-        weapon2.enabled = true;
+        SetVisibility(true);
         c.enabled = true;
         dead = false;
         rb2D.bodyType = RigidbodyType2D.Dynamic;
         transform.position = spawns[Random.Range(0, spawns.Length)].transform.position; //picks a random spawn, gets its position, sets it
     }
 
+    public void SetVisibility(bool isVisible)
+    {
+        sr.enabled = isVisible;
+        weapon1.enabled = isVisible;
+        weapon2.enabled = isVisible;
+        
+    }
     public bool IsDead()
     {
         return dead;
@@ -95,7 +98,6 @@ public class PlayerHealth : MonoBehaviour {
     {
         
         currentHealth -= damage;
-        //TODO: perhaps add pushback when damaged?
     }
 
     public bool NoLives()
