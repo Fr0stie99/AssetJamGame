@@ -1102,8 +1102,19 @@ Prefab:
         type: 2}
       propertyPath: currentWeaponObject
       value: 
+      objectReference: {fileID: 1886348313454302, guid: 01a397c29d574bf4abd8596c05e52426,
+        type: 2}
+    - target: {fileID: 114171926013124700, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: currentWeaponObject
+      value: 
       objectReference: {fileID: 1886348313454302, guid: 51696bb859702fa468e5fb9c49485e99,
         type: 2}
+    - target: {fileID: 114171926013124700, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: weaponIndex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}
   m_IsPrefabAsset: 0
@@ -1159,13 +1170,19 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b316dc9adfd1aa849aaffa512e66ad1b,
+      objectReference: {fileID: 21300000, guid: 4abbe20b78d04a94e94b328ca00b6f5c,
         type: 3}
     - target: {fileID: 95400819849027870, guid: 673be29ad6f70594ab896f8c0e65ce5e,
         type: 2}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: dd81f2696ddd96f44a3ee7d2ff4a23f3, type: 2}
+    - target: {fileID: 114428695809032994, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: currentWeaponObject
+      value: 
+      objectReference: {fileID: 1886348313454302, guid: 01a397c29d574bf4abd8596c05e52426,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}
   m_IsPrefabAsset: 0
