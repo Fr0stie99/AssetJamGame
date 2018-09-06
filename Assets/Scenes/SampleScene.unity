@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -365,6 +366,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af36c078eb7d1845b2b386077fff9e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &951397353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,7 +1057,7 @@ MonoBehaviour:
   angleSpeed: 360
   gravityScale: 4
   linearDrag: 0
-  angularDrag: 0.05
+  angularDrag: 20
   maxLives: 3
   maxHealth: 100
   maxRespawnTime: 1
@@ -1108,6 +1120,16 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 7d7e756050ddb524abb888588130784e, type: 2}
+    - target: {fileID: 50568900522779246, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50568900522779246, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}
   m_IsPrefabAsset: 0
@@ -1149,6 +1171,16 @@ Prefab:
     - target: {fileID: 4069478024750754, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 50568900522779246, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50568900522779246, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}

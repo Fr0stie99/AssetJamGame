@@ -56,7 +56,7 @@ public class PlayerHealth : MonoBehaviour {
 
         if (IsDead() && respawnTimer < maxRespawnTime)
         {
-            respawnTimer += Time.fixedDeltaTime;
+            respawnTimer += Time.deltaTime;
         }
         else if (IsDead())
         {
@@ -66,6 +66,7 @@ public class PlayerHealth : MonoBehaviour {
 
     void Die()
     {
+        Camera.main.GetComponent<TimeManager>().FreezeTime(Time.deltaTime);
         anim.Play("playerdead");
         currentLives -= 1;
         c.enabled = false;
