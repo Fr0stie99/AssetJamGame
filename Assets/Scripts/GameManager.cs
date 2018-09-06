@@ -56,14 +56,20 @@ public class GameManager : MonoBehaviour {
     {
         if (endTimer >= maxEndTime)
         {
-            Time.timeScale = 1.0f;
+            SetTimeScale(1f);
             SceneManager.LoadScene("Results");
             
         }
-        Time.timeScale = 0.3f;
+        SetTimeScale(0.3f);
         endTimer += Time.fixedUnscaledDeltaTime;
         game.color = Color.Lerp(Color.clear, Color.grey, 1.5f);
 
+    }
+
+    void SetTimeScale(float timescale)
+    {
+        Time.timeScale = timescale;
+        Time.fixedDeltaTime = timescale * 0.02f;
     }
 
 }
