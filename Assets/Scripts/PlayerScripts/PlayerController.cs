@@ -32,9 +32,14 @@ public class PlayerController : MonoBehaviour {
         health = GetComponent<PlayerHealth>();
         hand1 = transform.Find("Hand1").GetComponent<Hand>();
         hand2 = transform.Find("Hand2").GetComponent<Hand>();
-        storeWeapon = hand1.currentWeapon;
+       
         linearRot = 0f;
         
+    }
+
+    void Start()
+    {
+        storeWeapon = hand1.currentWeapon;
     }
 	
 	// Update is called once per frame

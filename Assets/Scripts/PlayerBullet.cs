@@ -7,17 +7,15 @@ using TeamUtility.IO;
 [RequireComponent(typeof(Animator))]
 public class PlayerBullet : MonoBehaviour, PlayerPushable {
 
-    float damage;
+    public float damage = 30f;
     public float projSpeed = 5f;
+    public float pushback = 40f;
     Rigidbody2D rb;
-    Transform firePoint;
-    Transform store;
-    float distance;
     PlayerID _id;
     Animator anim;
 
     Vector3 contactPoint;
-    float pushback;
+    
     bool isDead = false;
     void Awake()
     {
@@ -58,11 +56,8 @@ public class PlayerBullet : MonoBehaviour, PlayerPushable {
         anim.Play("explosion");
     }
 
-    public void SetAttributes(float damage, float bulletSpeed, float pushback, PlayerID id)
+    public void SetAttributes(PlayerID id)
     {
-        this.damage = damage;
-        projSpeed = bulletSpeed;
-        this.pushback = pushback;
         this._id = id;
     }
 

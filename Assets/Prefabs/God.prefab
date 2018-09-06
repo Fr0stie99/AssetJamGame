@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4810582945319702}
   - component: {fileID: 114039563794798244}
   - component: {fileID: 114064054418661876}
+  - component: {fileID: 114793406046408848}
+  - component: {fileID: 114212130621193346}
   m_Layer: 0
   m_Name: God
   m_TagString: Untagged
@@ -272,4 +274,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf58215a5c088c4a94386f44b90ac1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winner: {fileID: 0}
+  winnerName: 
+  winnerPic: {fileID: 0}
+--- !u!114 &114212130621193346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1558587650158858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30799d8b6f7fcc64685ba56389c1bbd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114793406046408848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1558587650158858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a2a37cd1ec0fa41bde573e9aa3faca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angleSpeed: 360
+  gravityScale: 4
+  linearDrag: 0
+  angularDrag: 20
+  maxLives: 3
+  maxHealth: 100
+  maxRespawnTime: 1

@@ -7,7 +7,7 @@ using TeamUtility.IO;
 
 public class ProjectileWeapon : MonoBehaviour, PlayerPushable, Weapon {
 
-    public float rotationSpeed, damage, recoil = 20f, bulletSpeed, fireRate = 0.5f, cooldownRate = 0.2f;
+    public float rotationSpeed, recoil = 20f, cooldownRate = 0.2f;
     public GameObject playerBullet;
     Vector2 bulletPos;
     PlayerID id;
@@ -21,13 +21,18 @@ public class ProjectileWeapon : MonoBehaviour, PlayerPushable, Weapon {
     void Awake()
     {
         firePoint = transform.Find("Barrel");
+        
+    }
+
+    void Start()
+    {
         player = GetComponentInParent<PlayerController>();
         id = player._playerID;
     }
 
     public void Fire()
     {
-
+        
         if (nextFire < cooldownRate)
         {
 
@@ -38,7 +43,8 @@ public class ProjectileWeapon : MonoBehaviour, PlayerPushable, Weapon {
 
         //instantiate the projectile
         GameObject bullet = Instantiate(playerBullet, bulletPos, Quaternion.identity);
-        bullet.GetComponent<PlayerBullet>().SetAttributes(damage, bulletSpeed, recoil, id);
+        
+        bullet.GetComponent<PlayerBullet>().SetAttributes(id);
         bullet.transform.rotation = transform.Find("Gun").rotation;
         player.ApplyRecoil(this);
         
@@ -46,6 +52,7 @@ public class ProjectileWeapon : MonoBehaviour, PlayerPushable, Weapon {
 
     void Update()
     {
+        
         nextFire += Time.fixedDeltaTime;
     }
 

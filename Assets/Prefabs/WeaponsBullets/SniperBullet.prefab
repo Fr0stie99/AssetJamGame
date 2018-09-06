@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 50722171833027886}
   - component: {fileID: 95612120816784324}
   m_Layer: 0
-  m_Name: PlayerBullet
+  m_Name: SniperBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b170593e3586cfe4687ad731b7efbdcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projSpeed: 5
+  damage: 50
+  projSpeed: 40
+  pushback: 60
 --- !u!212 &212241347814667266
 SpriteRenderer:
   m_ObjectHideFlags: 1
