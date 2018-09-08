@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TeamUtility.IO;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Collider2D))]
@@ -24,6 +25,13 @@ public class PlayerHealth : MonoBehaviour {
     Collider2D c;
     Rigidbody2D rb2D;
     Animator anim;
+
+    [Header("Unity UI")]
+    public Image healthBar;
+    public Image[] Lives;
+    public Sprite fullLive;
+    public Sprite emptyLive;
+
     void Awake()
     {
         renderers = GetComponentsInChildren<SpriteRenderer>();
@@ -62,6 +70,34 @@ public class PlayerHealth : MonoBehaviour {
         {
             Respawn();
         }
+
+        if(currentLives > maxLives)
+        {
+            currentLives = maxLives;
+        }
+
+        for (int i = 0; i < Lives.Length; i++)
+        {
+            if (i < currentLives)
+            {
+                Lives[i].sprite = emptyLive;
+            }
+            else
+            {
+                Lives[i].sprite = fullLive;
+            }
+
+            if(i < maxLives)
+            {
+                Lives[i].enabled = true;
+            }
+            else
+            {
+                Lives[i].enabled = false;
+            }
+        }
+
+        healthBar.fillAmount = currentHealth / maxHealth;
 	}
 
     void Die()
