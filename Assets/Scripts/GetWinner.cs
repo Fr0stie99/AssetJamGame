@@ -26,6 +26,8 @@ public class GetWinner : MonoBehaviour {
         {
             text.text = "Nobody (ur all losers lol)";
         }
+
+        FindObjectOfType<AudioManager>().Play("GameOver");
 	}
 	
 	// Update is called once per frame

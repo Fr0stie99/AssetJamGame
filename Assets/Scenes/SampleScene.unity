@@ -588,7 +588,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
 MonoBehaviour:
@@ -740,6 +740,62 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 591863565}
   m_CullTransparentMesh: 0
+--- !u!1 &752650955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 752650957}
+  - component: {fileID: 752650956}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &752650956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 752650955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ba3a4d89515d04fb4b600b79238525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Ded
+    clip: {fileID: 8300000, guid: 1d5e858e1e8c6004f995bb695e00c115, type: 3}
+    volume: 0.385
+    pitch: 1
+    source: {fileID: 0}
+  - name: GameOver
+    clip: {fileID: 8300000, guid: 4a6f5fd9374e89e4b827e40aab71c5d5, type: 3}
+    volume: 0.349
+    pitch: 1
+    source: {fileID: 0}
+  - name: Ow
+    clip: {fileID: 8300000, guid: d6cb509b3f117ed42849a13766714061, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+--- !u!4 &752650957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 752650955}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &951397353
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,7 +856,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &985844346
 Prefab:
@@ -839,7 +895,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4231710455824636, guid: f1ea52b3b04acde46a1fe238277e41e1, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1955003391064894, guid: f1ea52b3b04acde46a1fe238277e41e1, type: 2}
       propertyPath: m_Icon
@@ -1357,7 +1413,7 @@ Transform:
   m_Children:
   - {fileID: 1088518865}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214488491
 GameObject:
@@ -1540,7 +1596,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4817773917312640, guid: b2c8a3962148ef644936753fc7b2cfc1, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2c8a3962148ef644936753fc7b2cfc1, type: 2}
@@ -1712,7 +1768,7 @@ RectTransform:
   - {fileID: 1271992109}
   - {fileID: 1087912222}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1825,7 +1881,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4231710455824636, guid: f1ea52b3b04acde46a1fe238277e41e1, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1955003391064894, guid: f1ea52b3b04acde46a1fe238277e41e1, type: 2}
       propertyPath: m_Name
@@ -1880,7 +1936,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4069478024750754, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1739799906425902, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}
       propertyPath: m_Name

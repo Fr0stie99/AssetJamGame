@@ -104,6 +104,7 @@ public class PlayerHealth : MonoBehaviour {
     {
         Camera.main.GetComponent<TimeManager>().FreezeTime(Time.deltaTime);
         anim.Play("playerdead");
+        FindObjectOfType<AudioManager>().Play("Ded");
         currentLives -= 1;
         c.enabled = false;
         
@@ -143,6 +144,7 @@ public class PlayerHealth : MonoBehaviour {
     public void HurtMe(float damage)
     {
         anim.Play("playerhurt");
+        FindObjectOfType<AudioManager>().Play("Ow");
         currentHealth -= damage;
     }
 
