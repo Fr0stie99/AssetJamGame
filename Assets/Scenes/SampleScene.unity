@@ -352,6 +352,16 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6be21cb7041ebb2468fd36c1cc737a7d, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &206042812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1739799906425902, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1823141745}
+--- !u!4 &206042820 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4069478024750754, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1823141745}
 --- !u!1 &382541953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,6 +1384,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1129865610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1739799906425902, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1838036508}
 --- !u!1 &1140389332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1991,6 +2006,11 @@ Prefab:
       propertyPath: Lives.Array.data[0]
       value: 
       objectReference: {fileID: 1917703685}
+    - target: {fileID: 114963965701289388, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1129865610}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}
   m_IsPrefabAsset: 0
@@ -2096,6 +2116,16 @@ Prefab:
       propertyPath: Lives.Array.data[2]
       value: 
       objectReference: {fileID: 1087912220}
+    - target: {fileID: 114963965701289388, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 206042812}
+    - target: {fileID: 114963965701289388, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: playerTwo
+      value: 
+      objectReference: {fileID: 206042820}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}
   m_IsPrefabAsset: 0

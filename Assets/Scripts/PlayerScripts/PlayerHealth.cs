@@ -16,21 +16,26 @@ public class PlayerHealth : MonoBehaviour {
 
     int currentLives;
     float currentHealth;
-    float respawnTimer = 0f;
+    float respawnTimer = 0f, storeDistance, currentDistance;
+    Vector3 storePosition;
     bool dead;
-    PlayerID id;
+    bool awakeState = true;
+    PlayerID id, otherID;
 
     GameObject[] spawns;
     SpriteRenderer[] renderers;
     Collider2D c;
     Rigidbody2D rb2D;
     Animator anim;
+    GameObject playerTwo;
+    GameObject playerOne;
 
     [Header("Unity UI")]
     public Image healthBar;
     public Image[] Lives;
     public Sprite fullLive;
     public Sprite emptyLive;
+    
 
     void Awake()
     {
@@ -40,6 +45,9 @@ public class PlayerHealth : MonoBehaviour {
         spawns = GameObject.FindGameObjectsWithTag("Spawn");
         id = GetComponent<PlayerController>()._playerID;
         anim = GetComponent<Animator>();
+        playerTwo = GameObject.Find("Player2");
+        playerOne = GameObject.Find("Player");
+        //otherPlayer = transform.Find("Player2").GetComponent<Transform>();
 
     }
 
@@ -47,6 +55,7 @@ public class PlayerHealth : MonoBehaviour {
 	void Start () {
         currentLives = maxLives;
         Respawn();
+        awakeState = false;
 	}
 	
 	// Update is called once per frame
@@ -120,7 +129,67 @@ public class PlayerHealth : MonoBehaviour {
         dead = false;
         SetVisibility(true);
         rb2D.bodyType = RigidbodyType2D.Dynamic;
-        transform.position = spawns[Random.Range(0, spawns.Length)].transform.position; //picks a random spawn, gets its position, sets it
+        storeDistance = 0f;
+
+        //The players have fixed spawn points at first Spawn
+        if (awakeState)
+        {
+            if (id == PlayerID.One)
+            {
+                transform.position = spawns[0].transform.position;
+            }
+            else
+            {
+                transform.position = spawns[1].transform.position;
+            }
+
+            
+        }
+        else
+        {
+            //transform.position = spawns[Random.Range(0, spawns.Length)].transform.position; //picks a random spawn, gets its position, sets it
+
+
+
+            if (id == PlayerID.One)
+            {
+                
+                //calculates the difference between the player still alive and the spawnpoints
+                //will then spawn the player at the furthest spawnPoint
+                foreach (GameObject spawn in spawns)
+                {
+                    currentDistance = Vector3.Distance(spawn.transform.position, playerTwo.transform.position);
+                    
+
+                    if (currentDistance >= storeDistance)
+                    {
+                        storeDistance = currentDistance;
+                        storePosition = spawn.transform.position;
+                        Debug.Log(storeDistance);
+                    }
+
+                }
+                transform.position = storePosition;
+            }
+            else
+            {
+                foreach (GameObject spawn in spawns)
+                {
+                    currentDistance = Vector3.Distance(spawn.transform.position, playerOne.transform.position);
+
+
+                    if (currentDistance >= storeDistance)
+                    {
+                        storeDistance = currentDistance;
+                        storePosition = spawn.transform.position;
+                        Debug.Log(storeDistance);
+                    }
+
+                }
+                transform.position = storePosition;
+            }
+        }
+
     }
 
 
