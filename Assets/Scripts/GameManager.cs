@@ -20,7 +20,11 @@ public class GameManager : MonoBehaviour {
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Player")){
             players.Add(obj.GetComponent<PlayerHealth>());
         }
-	}
+
+        //set timescale to 1 at every instantiation of the game manager
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 1f * 0.02f;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -57,6 +61,7 @@ public class GameManager : MonoBehaviour {
         if (endTimer >= maxEndTime)
         {
             SetTimeScale(1f);
+            endTimer = 0f;
             SceneManager.LoadScene("Results");
             
         }
