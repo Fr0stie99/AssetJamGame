@@ -20,15 +20,14 @@ public class PlayerHealth : MonoBehaviour {
     Vector3 storePosition;
     bool dead;
     bool awakeState = true;
-    PlayerID id, otherID;
+    PlayerID id;
 
     GameObject[] spawns;
     SpriteRenderer[] renderers;
     Collider2D c;
     Rigidbody2D rb2D;
     Animator anim;
-    GameObject playerTwo;
-    GameObject playerOne;
+    GameObject playerOne, otherPlayer;
 
     [Header("Unity UI")]
     public Image healthBar;
@@ -45,7 +44,6 @@ public class PlayerHealth : MonoBehaviour {
         spawns = GameObject.FindGameObjectsWithTag("Spawn");
         id = GetComponent<PlayerController>()._playerID;
         anim = GetComponent<Animator>();
-        playerTwo = GameObject.Find("Player2");
         playerOne = GameObject.Find("Player");
         //otherPlayer = transform.Find("Player2").GetComponent<Transform>();
 
@@ -149,45 +147,25 @@ public class PlayerHealth : MonoBehaviour {
         {
             //transform.position = spawns[Random.Range(0, spawns.Length)].transform.position; //picks a random spawn, gets its position, sets it
 
+           otherPlayer = GetPlayerById(id);
 
-
-            if (id == PlayerID.One)
-            {
                 
                 //calculates the difference between the player still alive and the spawnpoints
                 //will then spawn the player at the furthest spawnPoint
                 foreach (GameObject spawn in spawns)
                 {
-                    currentDistance = Vector3.Distance(spawn.transform.position, playerTwo.transform.position);
+                    currentDistance = Vector3.Distance(spawn.transform.position, otherPlayer.transform.position);
                     
 
                     if (currentDistance >= storeDistance)
                     {
                         storeDistance = currentDistance;
                         storePosition = spawn.transform.position;
-                        Debug.Log(storeDistance);
                     }
 
                 }
                 transform.position = storePosition;
-            }
-            else
-            {
-                foreach (GameObject spawn in spawns)
-                {
-                    currentDistance = Vector3.Distance(spawn.transform.position, playerOne.transform.position);
 
-
-                    if (currentDistance >= storeDistance)
-                    {
-                        storeDistance = currentDistance;
-                        storePosition = spawn.transform.position;
-                        Debug.Log(storeDistance);
-                    }
-
-                }
-                transform.position = storePosition;
-            }
         }
 
     }
@@ -221,4 +199,19 @@ public class PlayerHealth : MonoBehaviour {
     {
         return currentLives <= 0;
     }
+
+    public GameObject GetPlayerById(PlayerID id)
+    {
+        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            if (player.GetComponent<PlayerController>()._playerID != id)
+            {
+                return player;
+            }
+        }
+        return playerOne;
+    }
+
 }
+
+
