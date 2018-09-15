@@ -10,6 +10,11 @@ public class Buttons : MonoBehaviour {
         SceneManager.LoadScene("SampleScene");
     }
 
+    public void BackMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit");

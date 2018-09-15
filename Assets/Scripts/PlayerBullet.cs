@@ -44,7 +44,7 @@ public class PlayerBullet : MonoBehaviour, PlayerPushable {
             return;
         }
         
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && collision.gameObject.GetComponent<PlayerController>()._playerID != _id)
         {
             contactPoint = -rb.velocity.normalized;
             collision.gameObject.GetComponent<PlayerHealth>().HurtMe(damage);
