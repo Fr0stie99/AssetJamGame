@@ -15,12 +15,14 @@ public class PlayerBullet : MonoBehaviour, PlayerPushable {
     Animator anim;
 
     Vector3 contactPoint;
+    Collider2D bulletCollider;
     
     bool isDead = false;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        bulletCollider = GetComponent<Collider2D>();
     }
     // Use this for initialization
 	
@@ -49,6 +51,8 @@ public class PlayerBullet : MonoBehaviour, PlayerPushable {
             contactPoint = -rb.velocity.normalized;
             collision.gameObject.GetComponent<PlayerHealth>().HurtMe(damage);
             collision.gameObject.GetComponent<PlayerController>().ApplyRecoil(this);
+            bulletCollider.enabled = false;
+            
             
         }
         rb.velocity = Vector2.zero;

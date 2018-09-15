@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (recoilOn && recoilForce > 0)
         {
+            recoilForce = storeWeapon.GetPushback();
             rb2D.velocity = -(storeWeapon.GetContactPoint() * recoilForce);
             recoilForce -= recoilForce;
         }
@@ -95,7 +96,7 @@ public class PlayerController : MonoBehaviour {
             if (recoilForce <= 0)
             {
                 recoilOn = false;
-                recoilForce = storeWeapon.GetPushback();
+                recoilForce = 1;
             }
         }
 
