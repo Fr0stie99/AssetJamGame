@@ -9,6 +9,7 @@ public class HurtOnEnter : MonoBehaviour {
         if (c.CompareTag("Player"))
         {
             c.GetComponent<PlayerHealth>().HurtMe(1000f);
+            Debug.Log(c.transform.position);
         }
     }
 }
