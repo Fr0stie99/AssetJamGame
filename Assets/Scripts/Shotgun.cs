@@ -13,6 +13,8 @@ public class Shotgun : MonoBehaviour, PlayerPushable, Weapon
     Vector2 bulletPos;
     PlayerID id;
     PlayerController player;
+    public GameObject canFire;
+    bool hasToldPlayer = false;
 
     float nextFire = 0.0f;
 
@@ -59,6 +61,15 @@ public class Shotgun : MonoBehaviour, PlayerPushable, Weapon
     {
 
         nextFire += Time.fixedDeltaTime;
+        if (nextFire >= cooldownRate && !hasToldPlayer && canFire != null)
+        {
+            Instantiate(canFire, firePoint.position, Quaternion.identity);
+            hasToldPlayer = true;
+        }
+        else if (nextFire < cooldownRate)
+        {
+            hasToldPlayer = false;
+        }
     }
 
     public float GetPushback()
