@@ -8,6 +8,8 @@ using TeamUtility.IO;
 public class ProjectileWeapon : MonoBehaviour, PlayerPushable, Weapon {
 
     public float rotationSpeed, recoil = 20f, cooldownRate = 0.2f;
+    public GameObject canFire;
+    bool hasToldPlayer = false;
     public GameObject playerBullet;
     Vector2 bulletPos;
     PlayerID id;
@@ -35,7 +37,6 @@ public class ProjectileWeapon : MonoBehaviour, PlayerPushable, Weapon {
         
         if (nextFire < cooldownRate)
         {
-
             return;
         }
         nextFire = 0.0f;
@@ -54,6 +55,16 @@ public class ProjectileWeapon : MonoBehaviour, PlayerPushable, Weapon {
     {
         
         nextFire += Time.fixedDeltaTime;
+
+        if (nextFire >= cooldownRate && !hasToldPlayer && canFire != null)
+        {
+            Instantiate(canFire, firePoint.position, Quaternion.identity);
+            hasToldPlayer = true;
+        }
+        else if (nextFire < cooldownRate)
+        {
+            hasToldPlayer = false;
+        }
     }
 
     public float GetPushback()

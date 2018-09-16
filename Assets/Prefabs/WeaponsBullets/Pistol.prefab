@@ -143,6 +143,7 @@ MonoBehaviour:
   rotationSpeed: 0
   recoil: 10
   cooldownRate: 0.2
+  canFire: {fileID: 1777970018327378, guid: d62733f70eb1ee9468336563dd25a07a, type: 2}
   playerBullet: {fileID: 1589156526144796, guid: 360cd3301cd58a94bbc313cf602715cd,
     type: 2}
   firePoint: {fileID: 0}
