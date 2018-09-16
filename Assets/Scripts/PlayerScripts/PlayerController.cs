@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
     GroundedManager gm;
     PlayerHealth health;
     Hand hand1, hand2;
-    PlayerPushable storeWeapon;
+    PlayerPushable pushableThing;
 
     float horizontal, shoot1Timer = 0f, shoot2Timer = 0f, shoot1Threshold, shoot2Threshold, recoilForce =0f, rotSpeed, linearRot;
 
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start()
     {
-        storeWeapon = hand1.currentWeapon;
+        pushableThing = hand1.currentWeapon;
     }
 	
 	// Update is called once per frame
@@ -88,8 +88,8 @@ public class PlayerController : MonoBehaviour {
     {
         if (recoilOn && recoilForce > 0)
         {
-            recoilForce = storeWeapon.GetPushback();
-            rb2D.velocity = -(storeWeapon.GetContactPoint() * recoilForce);
+            recoilForce = pushableThing.GetPushback();
+            rb2D.velocity = -(pushableThing.GetContactPoint() * recoilForce);
             recoilForce -= recoilForce;
         }
         else {
@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour {
     public void ApplyRecoil(PlayerPushable forceSource)
     {
         recoilOn = true;
-        storeWeapon = forceSource;
+        pushableThing = forceSource;
     }
 
 
