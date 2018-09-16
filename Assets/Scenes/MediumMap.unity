@@ -303,7 +303,7 @@ Prefab:
     - target: {fileID: 114212130621193346, guid: 6be21cb7041ebb2468fd36c1cc737a7d,
         type: 2}
       propertyPath: weapons.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4810582945319702, guid: 6be21cb7041ebb2468fd36c1cc737a7d, type: 2}
       propertyPath: m_LocalPosition.x
@@ -353,6 +353,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114212130621193346, guid: 6be21cb7041ebb2468fd36c1cc737a7d,
+        type: 2}
+      propertyPath: weapons.Array.data[2]
+      value: 
+      objectReference: {fileID: 1886348313454302, guid: 35863317d0355c04782b2cdf8e902a95,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6be21cb7041ebb2468fd36c1cc737a7d, type: 2}
   m_IsPrefabAsset: 0
@@ -2455,7 +2461,7 @@ Prefab:
         type: 2}
       propertyPath: currentWeaponObject
       value: 
-      objectReference: {fileID: 1886348313454302, guid: 01a397c29d574bf4abd8596c05e52426,
+      objectReference: {fileID: 1886348313454302, guid: 35863317d0355c04782b2cdf8e902a95,
         type: 2}
     - target: {fileID: 114963965701289388, guid: 673be29ad6f70594ab896f8c0e65ce5e,
         type: 2}
@@ -2499,6 +2505,11 @@ Prefab:
       propertyPath: playerTwo
       value: 
       objectReference: {fileID: 206042820}
+    - target: {fileID: 114428695809032994, guid: 673be29ad6f70594ab896f8c0e65ce5e,
+        type: 2}
+      propertyPath: weaponIndex
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673be29ad6f70594ab896f8c0e65ce5e, type: 2}
   m_IsPrefabAsset: 0
@@ -2609,6 +2620,10 @@ Prefab:
     - target: {fileID: 4189749410277208, guid: 489d88b4f0187484c9a9123252d7abcd, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1867056443097984, guid: 489d88b4f0187484c9a9123252d7abcd, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 489d88b4f0187484c9a9123252d7abcd, type: 2}

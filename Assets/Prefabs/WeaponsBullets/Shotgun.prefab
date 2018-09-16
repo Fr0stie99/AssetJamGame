@@ -66,7 +66,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4694131415669500}
-  - component: {fileID: 114590881087640128}
+  - component: {fileID: 114432955187398170}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -129,7 +129,7 @@ Transform:
   m_Father: {fileID: 4694131415669500}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114590881087640128
+--- !u!114 &114432955187398170
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,13 +137,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1886348313454302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0b751bd9b3b5554987898e3370e4eaa, type: 3}
+  m_Script: {fileID: 11500000, guid: d50b1fabb9dd7344e986687ef9852d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 0
-  recoil: 30
-  cooldownRate: 1
-  playerBullet: {fileID: 1589156526144796, guid: 3a12f77104b5c3a46978852da53630a0,
+  recoil: 20
+  cooldownRate: 0.2
+  playerBullet: {fileID: 1589156526144796, guid: 03ad7ecde2143654ea22c9d3dbf86867,
     type: 2}
   firePoint: {fileID: 0}
 --- !u!212 &212132684884714126

@@ -33,26 +33,24 @@ public class Shotgun : MonoBehaviour, PlayerPushable, Weapon
 
     public void Fire()
     {
-
         if (nextFire < cooldownRate)
         {
-
             return;
         }
+
         nextFire = 0.0f;
         bulletPos = new Vector2(firePoint.position.x, firePoint.position.y);
 
         //instantiate the projectile
         GameObject[] Bullets = new GameObject[3];
 
-        for (int i = 0; i > Bullets.Length; i++)
+        for (int i = 0; i < Bullets.Length; i++)
         {
             Bullets[i] = Instantiate(playerBullet, bulletPos, Quaternion.identity);
             Bullets[i].GetComponent<PlayerBullet>().SetAttributes(id);
             Bullets[i].transform.rotation = transform.Find("Gun").rotation;
             Bullets[i].transform.rotation = Bullets[i].transform.rotation * Quaternion.Euler(0,0,-20 + i*20);
             player.ApplyRecoil(this);
-            Debug.Log(i);
         }
 
     }
