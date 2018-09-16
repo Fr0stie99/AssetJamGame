@@ -7,7 +7,7 @@ public class Buttons : MonoBehaviour {
 
     public void ReplayGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Map");
     }
 
     public void BackMainMenu()
