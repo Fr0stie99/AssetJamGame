@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TeamUtility.IO;
+public enum HandType { Left, Right }
 public class Hand : MonoBehaviour {
     [SerializeField]
     GameObject currentWeaponObject;
@@ -9,8 +10,15 @@ public class Hand : MonoBehaviour {
     int weaponIndex;
     [HideInInspector]
     public Weapon currentWeapon;
+
+    PlayerID id;
+    public HandType hand;
+    
+
+    AvailableWeapons weapons;
 	// Use this for initialization
 	void Awake () {
+        //weaponIndex = weapons.GetWeaponIndex(hand, id);
         SwitchWeapon();
 	}
 	
@@ -32,4 +40,8 @@ public class Hand : MonoBehaviour {
         currentWeapon.Fire();
     }
 
+    public void SetCurrentWeapon(GameObject weapon)
+    {
+        currentWeaponObject = weapon;
+    }
 }

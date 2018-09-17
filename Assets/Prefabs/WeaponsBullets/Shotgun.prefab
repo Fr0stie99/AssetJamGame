@@ -142,9 +142,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 0
   recoil: 20
-  cooldownRate: 0.2
+  cooldownRate: 0.5
   playerBullet: {fileID: 1589156526144796, guid: 03ad7ecde2143654ea22c9d3dbf86867,
     type: 2}
+  canFire: {fileID: 1777970018327378, guid: d62733f70eb1ee9468336563dd25a07a, type: 2}
   firePoint: {fileID: 0}
 --- !u!212 &212132684884714126
 SpriteRenderer:
