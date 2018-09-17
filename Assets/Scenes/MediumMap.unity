@@ -698,6 +698,11 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
+  - name: Shotgun
+    clip: {fileID: 8300000, guid: 4e422660fbeed3544bdb1e4a61abb98d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
 --- !u!4 &752650957
 Transform:
   m_ObjectHideFlags: 0

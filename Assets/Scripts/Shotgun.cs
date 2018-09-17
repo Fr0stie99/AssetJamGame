@@ -45,6 +45,7 @@ public class Shotgun : MonoBehaviour, PlayerPushable, Weapon
 
         //instantiate the projectile
         GameObject[] Bullets = new GameObject[3];
+        FindObjectOfType<AudioManager>().Play("Shotgun");
 
         for (int i = 0; i < Bullets.Length; i++)
         {
