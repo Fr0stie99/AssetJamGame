@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TeamUtility.IO;
 
 public class Ready : MonoBehaviour {
-    bool ready;
+    public bool ready;
     Color color;
     Image image;
     public PlayerID id;            
@@ -16,13 +16,13 @@ public class Ready : MonoBehaviour {
         color = image.color;
 	}
 
-     void ReadyUp()
+     public void ReadyUp()
     {
         image.color = Color.white;
         ready = true;
     }
 
-     void UnReady()
+    public void UnReady()
     {
         image.color = color;
         ready = false;

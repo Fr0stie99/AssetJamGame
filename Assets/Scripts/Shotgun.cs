@@ -50,7 +50,7 @@ public class Shotgun : MonoBehaviour, PlayerPushable, Weapon
         for (int i = 0; i < Bullets.Length; i++)
         {
             Bullets[i] = Instantiate(playerBullet, bulletPos, Quaternion.identity);
-            Bullets[i].GetComponent<PlayerBullet>().SetAttributes(id);
+            Bullets[i].GetComponent<ShotgunBullet>().SetAttributes(id);
             Bullets[i].transform.rotation = transform.Find("Gun").rotation;
             Bullets[i].transform.rotation = Bullets[i].transform.rotation * Quaternion.Euler(0,0,-20 + i*20);
             player.ApplyRecoil(this);

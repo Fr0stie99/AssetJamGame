@@ -41,7 +41,7 @@ public class PlayerBullet : MonoBehaviour, PlayerPushable {
     //Destroy projectile upon collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.name == "Killbox")
         {
             return;
         }

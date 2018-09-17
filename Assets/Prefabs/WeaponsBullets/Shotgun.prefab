@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 0
-  recoil: 20
+  recoil: 25
   cooldownRate: 0.5
   playerBullet: {fileID: 1589156526144796, guid: 03ad7ecde2143654ea22c9d3dbf86867,
     type: 2}

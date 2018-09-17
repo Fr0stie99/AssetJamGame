@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4779628152161096}
   - component: {fileID: 212241347814667266}
-  - component: {fileID: 114832461719527302}
   - component: {fileID: 58822912238351398}
   - component: {fileID: 50722171833027886}
   - component: {fileID: 95612120816784324}
@@ -209,20 +208,6 @@ MonoBehaviour:
   projSpeed: 10
   pushback: 40
   bulletTimerMax: 0.8
---- !u!114 &114832461719527302
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1589156526144796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b170593e3586cfe4687ad731b7efbdcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  projSpeed: 7
-  pushback: 15
 --- !u!212 &212241347814667266
 SpriteRenderer:
   m_ObjectHideFlags: 1
