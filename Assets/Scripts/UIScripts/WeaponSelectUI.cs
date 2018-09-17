@@ -8,16 +8,70 @@ using TeamUtility.IO;
 
 public class WeaponSelectUI : MonoBehaviour {
 
-    public PlayerID _playerID, id;
+    PlayerID _playerID, id;
+    GameObject key;
+    Graphic keyText;
+    Color changeColor, initialColor;
 
+    private void Start()
+    {
+        changeColor = Color.yellow;
+        initialColor = Color.white;
+    }
     private void Update()
     {
-        if(InputManager.GetButtonDown("Shoot1", _playerID))
+        //light up Q
+        if(InputManager.GetButtonDown("Shoot1", PlayerID.One))
         {
-            if(_playerID == PlayerID.One)
-            {
+                key = GameObject.Find("Key11");
+                keyText = key.GetComponent<Graphic>();
+                keyText.color = changeColor;       
+        }else if(InputManager.GetButtonUp("Shoot1", PlayerID.One))
+        {
+            key = GameObject.Find("Key11");
+            keyText = key.GetComponent<Graphic>();
+            keyText.color = initialColor;
+        }
+        //light up E
+        if (InputManager.GetButtonDown("Shoot2", PlayerID.One))
+        {
+            key = GameObject.Find("Key12");
+            keyText = key.GetComponent<Graphic>();
+            keyText.color = changeColor;
+        }
+        else if (InputManager.GetButtonUp("Shoot2", PlayerID.One))
+        {
+            key = GameObject.Find("Key12");
+            keyText = key.GetComponent<Graphic>();
+            keyText.color = initialColor;
+        }
 
-            }
+        //light up O
+        if (InputManager.GetButtonDown("Shoot1", PlayerID.Two))
+        {
+            key = GameObject.Find("Key21");
+            keyText = key.GetComponent<Graphic>();
+            keyText.color = changeColor;
+        }
+        else if (InputManager.GetButtonUp("Shoot1", PlayerID.Two))
+        {
+            key = GameObject.Find("Key21");
+            keyText = key.GetComponent<Graphic>();
+            keyText.color = initialColor;
+        }
+
+        //light up P
+        if (InputManager.GetButtonDown("Shoot2", PlayerID.Two))
+        {
+            key = GameObject.Find("Key22");
+            keyText = key.GetComponent<Graphic>();
+            keyText.color = changeColor;
+        }
+        else if (InputManager.GetButtonUp("Shoot2", PlayerID.Two))
+        {
+            key = GameObject.Find("Key22");
+            keyText = key.GetComponent<Graphic>();
+            keyText.color = initialColor;
         }
     }
 
