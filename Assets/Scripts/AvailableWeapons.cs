@@ -6,11 +6,10 @@ using TeamUtility.IO;
 public class AvailableWeapons : MonoBehaviour {
     public GameObject[] weapons;
     // Use this for initialization
-    Vector2Int player1, player2;
+    public Vector2Int player1 = new Vector2Int(0, 0);
+    public Vector2Int player2 = new Vector2Int(0, 0);
     void Awake()
     {
-        player1 = new Vector2Int(0, 0);
-        player2 = new Vector2Int(0, 0);
         
     }
 

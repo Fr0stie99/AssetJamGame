@@ -14,6 +14,8 @@ public class HandEditor : Editor
     GameObject[] _weapons;
     private static string[] _choices;
     private int _choiceIndex = 0;
+    private HandType hand;
+    private int handIndex = 0;
 
     void OnEnable()
     {
@@ -44,7 +46,9 @@ public class HandEditor : Editor
             _choiceIndex = 0;
         currentWeaponProperty.objectReferenceValue = _weapons[_choiceIndex];
         serializedObject.FindProperty("weaponIndex").intValue = _choiceIndex;
+        hand = (HandType) EditorGUILayout.EnumPopup(hand);
 
+        serializedObject.FindProperty("hand").enumValueIndex= (int) hand;
 
         // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.
         serializedObject.ApplyModifiedProperties();

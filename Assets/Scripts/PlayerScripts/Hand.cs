@@ -21,8 +21,10 @@ public class Hand : MonoBehaviour {
     AvailableWeapons weapons;
 	// Use this for initialization
 	void Awake () {
+        id = GetComponentInParent<PlayerController>()._playerID;
         weapons = GameObject.Find("God").GetComponent<AvailableWeapons>();
         weaponIndex = weapons.GetWeaponIndex(hand, id);
+        
         currentWeaponObject = weapons.weapons[weaponIndex];
         SwitchWeapon();
 	}

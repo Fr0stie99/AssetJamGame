@@ -206,7 +206,7 @@ Animator:
   m_GameObject: {fileID: 1739799906425902}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7d7e756050ddb524abb888588130784e, type: 2}
+  m_Controller: {fileID: 9100000, guid: dd81f2696ddd96f44a3ee7d2ff4a23f3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -226,8 +226,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91e17bdbd30a184ea14a05d49050492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeaponObject: {fileID: 1886348313454302, guid: 01a397c29d574bf4abd8596c05e52426,
+  currentWeaponObject: {fileID: 1886348313454302, guid: 51696bb859702fa468e5fb9c49485e99,
     type: 2}
+  weaponIndex: 1
+  hand: 1
 --- !u!114 &114428695809032994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,8 +241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91e17bdbd30a184ea14a05d49050492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeaponObject: {fileID: 1886348313454302, guid: 01a397c29d574bf4abd8596c05e52426,
+  currentWeaponObject: {fileID: 1886348313454302, guid: 35863317d0355c04782b2cdf8e902a95,
     type: 2}
+  weaponIndex: 2
+  hand: 0
 --- !u!114 &114498533060004038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c3da526b7741f47b40186b220598e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerID: 1
+  _playerID: 0
   angleSpeed: 360
   rotationSpeed: 5
 --- !u!114 &114780930336362748
@@ -291,6 +295,13 @@ MonoBehaviour:
   maxLives: 3
   maxHealth: 100
   maxRespawnTime: 1
+  healthBar: {fileID: 0}
+  Lives:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullLive: {fileID: 21300000, guid: 8ab7e69d041246d46a2f7fcd87fc084f, type: 3}
+  emptyLive: {fileID: 21300002, guid: 8ab7e69d041246d46a2f7fcd87fc084f, type: 3}
 --- !u!212 &212070105769851150
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -326,7 +337,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b316dc9adfd1aa849aaffa512e66ad1b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4abbe20b78d04a94e94b328ca00b6f5c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
