@@ -15,19 +15,33 @@ public class WeaponSelectUI : MonoBehaviour {
     Text weaponText;
     Color changeColor, initialColor;
     AvailableWeapons weapons;
+    Object[] ReadyIcons;
 
     private void Start()
     {
         weapons = GameObject.Find("God").GetComponent<AvailableWeapons>();
         changeColor = Color.yellow;
         initialColor = Color.white;
+        ReadyIcons = GameObject.FindGameObjectsWithTag("Ready");
     }
     private void Update()
     {
+
         //light up each hand in turn
-        foreach (HandType hand in System.Enum.GetValues(typeof(HandType)))
+        foreach (PlayerID id in System.Enum.GetValues(typeof(PlayerID)))
         {
-            foreach (PlayerID id in System.Enum.GetValues(typeof(PlayerID)))
+            if ((int)id > 1) continue;
+            Ready ready = FindCorrectReady(id);
+            if (InputManager.GetButtonDown("Shoot1", id) && InputManager.GetButtonDown("Shoot2", id))
+            {
+                ready.ToggleReady();
+            }
+            if (ready.IsReady())
+            {
+                continue;
+            }
+            
+            foreach (HandType hand in System.Enum.GetValues(typeof(HandType)))
             {
                 if (InputManager.GetButtonDown(hand.ToString(), id))
                 {
@@ -47,6 +61,18 @@ public class WeaponSelectUI : MonoBehaviour {
                     keyText.color = initialColor;
                 }
             }
+
+            
+        }
+
+        bool readyCheck = true;
+        foreach (GameObject readyIcon in ReadyIcons)
+        {
+            readyCheck &= readyIcon.GetComponent<Ready>().IsReady();
+        }
+        if (readyCheck)
+        {
+            SceneManager.LoadScene("MediumMap");
         }
     }   
         
@@ -67,5 +93,16 @@ public class WeaponSelectUI : MonoBehaviour {
         weaponSprite = playerHand.transform.Find("WeaponSprite").GetComponent<Image>();
         weaponText = playerHand.transform.Find("WeaponName").GetComponent<Text>();
         
+    }
+
+    Ready FindCorrectReady(PlayerID id)
+    {
+        foreach (GameObject ReadyIcon in ReadyIcons)
+        {
+            Ready ready = ReadyIcon.GetComponent<Ready>();
+            if (ready.id == id)
+                return ready;
+        }
+        return null;
     }
 }

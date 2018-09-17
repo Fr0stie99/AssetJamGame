@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TeamUtility.IO;
 public enum HandType { Shoot1, Shoot2 }
+//TODO: GET RID;
+
 public class Hand : MonoBehaviour {
     [SerializeField]
     GameObject currentWeaponObject;
@@ -11,6 +13,7 @@ public class Hand : MonoBehaviour {
     [HideInInspector]
     public Weapon currentWeapon;
 
+
     PlayerID id;
     public HandType hand;
     
@@ -18,7 +21,9 @@ public class Hand : MonoBehaviour {
     AvailableWeapons weapons;
 	// Use this for initialization
 	void Awake () {
-        //weaponIndex = weapons.GetWeaponIndex(hand, id);
+        weapons = GameObject.Find("God").GetComponent<AvailableWeapons>();
+        weaponIndex = weapons.GetWeaponIndex(hand, id);
+        currentWeaponObject = weapons.weapons[weaponIndex];
         SwitchWeapon();
 	}
 	
