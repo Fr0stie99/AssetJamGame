@@ -1242,7 +1242,7 @@ GameObject:
   - component: {fileID: 997044345}
   - component: {fileID: 997044344}
   m_Layer: 5
-  m_Name: Player2Hand1
+  m_Name: TwoShoot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2058,7 +2058,7 @@ GameObject:
   - component: {fileID: 1765885524}
   - component: {fileID: 1765885523}
   m_Layer: 5
-  m_Name: Player1Hand1
+  m_Name: OneShoot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2630,7 +2630,7 @@ GameObject:
   - component: {fileID: 2014828741}
   - component: {fileID: 2014828740}
   m_Layer: 5
-  m_Name: Player1Hand2
+  m_Name: OneShoot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2745,7 +2745,7 @@ GameObject:
   - component: {fileID: 2045539629}
   - component: {fileID: 2045539628}
   m_Layer: 5
-  m_Name: Player2Hand2
+  m_Name: TwoShoot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -24,87 +24,34 @@ public class WeaponSelectUI : MonoBehaviour {
     }
     private void Update()
     {
-        //light up Q
-        foreach (HandType hand in System.Enum.GetValues(typeof(HandType))){
+        //light up each hand in turn
+        foreach (HandType hand in System.Enum.GetValues(typeof(HandType)))
+        {
             foreach (PlayerID id in System.Enum.GetValues(typeof(PlayerID)))
             {
-                if (InputManager.GetButtonDown("Shoot1", PlayerID.One))
+                if (InputManager.GetButtonDown(hand.ToString(), id))
                 {
-                    weapons.ChangeWeaponP1((int)hand);
-                    SetKeyAndSprite("Player1Hand1");
+                    weapons.ChangeWeapon(id, (int)hand);
+                    SetKeyAndSprite(id, hand);
                     keyText.color = changeColor;
-                    GameObject weapon = weapons.weapons[weapons.GetWeaponIndex(HandType.Shoot1, PlayerID.One)];
+                    GameObject weapon = weapons.weapons[weapons.GetWeaponIndex(hand, id)];
                     weaponSprite.sprite = weapon.transform.Find("Gun").GetComponent<SpriteRenderer>().sprite;
                     weaponSprite.color = weapon.transform.Find("Gun").GetComponent<SpriteRenderer>().color;
                     weaponText.text = weapon.name;
                 }
+                else if (InputManager.GetButtonUp(hand.ToString(), id))
+                {
+
+                    SetKeyAndSprite(id, hand);
+                    keyText = key.GetComponent<Graphic>();
+                    keyText.color = initialColor;
+                }
             }
         }
-        else if(InputManager.GetButtonUp("Shoot1", PlayerID.One))
-        {
-
-            SetKeyAndSprite("Player1Hand1");
-            keyText = key.GetComponent<Graphic>();
-            keyText.color = initialColor;
-        }
+    }   
+        
         //light up E
-        if (InputManager.GetButtonDown("Shoot2", PlayerID.One))
-        {
-            weapons.ChangeWeaponP1(1);
-            SetKeyAndSprite("Player1Hand2");
-            keyText = key.GetComponent<Graphic>();
-            keyText.color = changeColor;
-            GameObject weapon = weapons.weapons[weapons.GetWeaponIndex(HandType.Shoot2, PlayerID.One)];
-            weaponSprite.sprite = weapon.transform.Find("Gun").GetComponent<SpriteRenderer>().sprite;
-            weaponSprite.color = weapon.transform.Find("Gun").GetComponent<SpriteRenderer>().color;
-            weaponText.text = weapon.name;
-        }
-        else if (InputManager.GetButtonUp("Shoot2", PlayerID.One))
-        {
-
-            SetKeyAndSprite("Player1Hand2");
-            keyText = key.GetComponent<Graphic>();
-            keyText.color = initialColor;
-        }
-
-        //light up O
-        if (InputManager.GetButtonDown("Shoot1", PlayerID.Two))
-        {
-            weapons.ChangeWeaponP2(0);
-            SetKeyAndSprite("Player2Hand1");
-            keyText = key.GetComponent<Graphic>();
-            keyText.color = changeColor;
-            GameObject weapon = weapons.weapons[weapons.GetWeaponIndex(HandType.Shoot1, PlayerID.Two)];
-            weaponSprite.sprite = weapon.transform.Find("Gun").GetComponent<SpriteRenderer>().sprite;
-            weaponSprite.color = weapon.transform.Find("Gun").GetComponent<SpriteRenderer>().color;
-            weaponText.text = weapon.name;
-        }
-        else if (InputManager.GetButtonUp("Shoot1", PlayerID.Two))
-        {
-            SetKeyAndSprite("Player2Hand1");
-            keyText = key.GetComponent<Graphic>();
-            keyText.color = initialColor;
-        }
-
-        //light up P
-        if (InputManager.GetButtonDown("Shoot2", PlayerID.Two))
-        {
-            weapons.ChangeWeaponP2(1);
-            SetKeyAndSprite("Player2Hand2");
-            keyText = key.GetComponent<Graphic>();
-            keyText.color = changeColor;
-            GameObject weapon = weapons.weapons[weapons.GetWeaponIndex(HandType.Shoot2, PlayerID.Two)];
-            weaponSprite.sprite = weapon.transform.Find("Gun").GetComponent<SpriteRenderer>().sprite;
-            weaponSprite.color = weapon.transform.Find("Gun").GetComponent<SpriteRenderer>().color;
-            weaponText.text = weapon.name;
-        }
-        else if (InputManager.GetButtonUp("Shoot2", PlayerID.Two))
-        {
-            SetKeyAndSprite("Player2Hand2");
-            keyText = key.GetComponent<Graphic>();
-            keyText.color = initialColor;
-        }
-    }
+        
 
     public void BackButton()
     {
@@ -112,9 +59,9 @@ public class WeaponSelectUI : MonoBehaviour {
     }
     
 
-    void SetKeyAndSprite(string name)
+    void SetKeyAndSprite(PlayerID id, HandType hand)
     {
-        GameObject playerHand = GameObject.Find(name);
+        GameObject playerHand = GameObject.Find(id.ToString() + hand.ToString());
         key = playerHand.transform.Find("Key").gameObject;
         keyText = key.GetComponent<Graphic>();
         weaponSprite = playerHand.transform.Find("WeaponSprite").GetComponent<Image>();

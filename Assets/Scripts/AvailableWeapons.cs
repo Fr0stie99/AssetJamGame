@@ -13,6 +13,18 @@ public class AvailableWeapons : MonoBehaviour {
         player2 = new Vector2Int(0, 0);
         
     }
+
+    public void ChangeWeapon(PlayerID id, int index)
+    {
+        if (id == PlayerID.One)
+        {
+            ChangeWeaponP1(index);
+        }
+        else
+        {
+            ChangeWeaponP2(index);
+        }
+    }
     //0 if left weapon, 1 if right weapon
     public void ChangeWeaponP1(int index)
     {
