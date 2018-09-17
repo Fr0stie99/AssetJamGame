@@ -1172,7 +1172,7 @@ Prefab:
     - target: {fileID: 114212130621193346, guid: 6be21cb7041ebb2468fd36c1cc737a7d,
         type: 2}
       propertyPath: weapons.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4810582945319702, guid: 6be21cb7041ebb2468fd36c1cc737a7d, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1217,6 +1217,12 @@ Prefab:
       propertyPath: weapons.Array.data[1]
       value: 
       objectReference: {fileID: 1886348313454302, guid: 51696bb859702fa468e5fb9c49485e99,
+        type: 2}
+    - target: {fileID: 114212130621193346, guid: 6be21cb7041ebb2468fd36c1cc737a7d,
+        type: 2}
+      propertyPath: weapons.Array.data[2]
+      value: 
+      objectReference: {fileID: 1886348313454302, guid: 35863317d0355c04782b2cdf8e902a95,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6be21cb7041ebb2468fd36c1cc737a7d, type: 2}

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TeamUtility.IO;
-public enum HandType { Left, Right }
+public enum HandType { Shoot1, Shoot2 }
 public class Hand : MonoBehaviour {
     [SerializeField]
     GameObject currentWeaponObject;
