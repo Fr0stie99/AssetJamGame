@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraController : MonoBehaviour
 {
     Camera camera;
-
+    BoxCollider2D killbox;
     float minX;
     float minY;
     float maxX;
@@ -17,6 +17,8 @@ public class CameraController : MonoBehaviour
     void Awake()
     {
         camera = GetComponent<Camera>();
+        killbox = GameObject.Find("Killbox").GetComponent<BoxCollider2D>();
+        Debug.Log(killbox.bounds);
     }
 
     // Update is called once per frame
@@ -62,24 +64,30 @@ public class CameraController : MonoBehaviour
             cameraCenter += new Vector3(player.transform.position.x, player.transform.position.y, 0.0f);
         }
 
-        Vector3 finalCameraCenter = new Vector3(cameraCenter.x / players.Length, cameraCenter.y / players.Length, transform.position.z);
-
-
-        if (players.Length > 0)
-            transform.position = Vector3.Lerp(transform.position, finalCameraCenter, cameraSpeed * Time.deltaTime);
-        else
-            transform.position = Vector3.Lerp(transform.position, defaultCam, cameraSpeed * Time.deltaTime);
-
-
         float sizeX = maxX - minX + cameraBuffer.x;
         float sizeY = maxY - minY + cameraBuffer.y;
 
         float camSize = (sizeX > sizeY ? sizeX : sizeY); // If sizeX > sizeY, camSize = sizeX, else sizeY
 
-        if (players.Length > 0)
-            camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, camSize * sizeStuff, cameraSpeed * Time.deltaTime);
-        else
-            camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, defaultSize, cameraSpeed * Time.deltaTime);
+
+
+        if (camSize > killbox.size.x / 2)
+        {
+            camSize = killbox.size.x / 2;
+        }
+
+
+        camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, camSize * sizeStuff, cameraSpeed * Time.deltaTime);
+
+        Vector3 finalCameraCenter = new Vector3(cameraCenter.x / players.Length, cameraCenter.y / players.Length, transform.position.z);
+
+
+        transform.position = Vector3.Lerp(transform.position, finalCameraCenter, cameraSpeed * Time.deltaTime);
+        
+
+
+        
+        
 
     }
 }

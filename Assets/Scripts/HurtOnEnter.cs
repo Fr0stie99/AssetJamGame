@@ -11,7 +11,7 @@ public class HurtOnEnter : MonoBehaviour {
         mainCamera = GameObject.Find("Main Camera").GetComponent<ScreenShake>();
     }
 
-    void OnTriggerEnter2D(Collider2D c)
+    void OnTriggerExit2D(Collider2D c)
     {
         if (c.CompareTag("Player"))
         {
